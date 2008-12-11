@@ -59,6 +59,8 @@ make install DESTDIR=$RPM_BUILD_ROOT
 find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
 find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-{compiler,generate}
+# Mistake in upstream automake
+rm -f $RPM_BUILD_ROOT/%{_bindir}/barapp
 
 %clean
 rm -rf $RPM_BUILD_ROOT
