@@ -9,7 +9,7 @@ Summary:        Introspection system for GObject-based libraries
 Group:		Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
-Source0:        http://ftp.acc.umu.se/pub/GNOME/sources/gobject-introspection/0.6/gobject-introspection-0.6.0.tar.bz2
+Source0:        http://ftp.acc.umu.se/pub/GNOME/sources/gobject-introspection/0.6/gobject-introspection-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  glib2-devel
