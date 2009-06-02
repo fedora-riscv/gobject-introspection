@@ -23,6 +23,12 @@ BuildRequires:  libffi-devel
 BuildRequires:  chrpath
 BuildRequires:  mesa-libGL-devel
 BuildRequires:  cairo-devel
+BuildRequires:  libxml2-devel
+BuildRequires:  libXfixes-devel
+BuildRequires:  libX11-devel
+BuildRequires:  fontconfig-devel
+BuildRequires:  libXft-devel
+BuildRequires:  freetype-devel
 
 # For autogen
 BuildRequires:  gnome-common
