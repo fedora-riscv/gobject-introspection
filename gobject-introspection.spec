@@ -2,8 +2,8 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.6.1
-Release:        2%{?dist}
+Version:        0.6.2
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:		Development/Libraries
@@ -21,6 +21,7 @@ BuildRequires:  flex
 BuildRequires:  bison
 BuildRequires:  libffi-devel
 BuildRequires:  chrpath
+BuildRequires:  mesa-libGL-devel
 
 # For autogen
 BuildRequires:  gnome-common
@@ -74,8 +75,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc COPYING
 
 %{_libdir}/lib*.so.*
-%dir %{_libdir}/girepository
-%{_libdir}/girepository/*.typelib
+%dir %{_libdir}/girepository-1.0
+%{_libdir}/girepository-1.0/*.typelib
 
 %files devel
 %defattr(-,root,root)
@@ -83,11 +84,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
 %{_bindir}/g-ir-*
-%{_datadir}/gir
+%{_datadir}/gir-1.0
 %{python_sitearch}/giscanner
 %{_mandir}/man1/*.gz
 
 %changelog
+* Mon Jun  1 2009 Dan Williams <dcbw@redhat.com> - 0.6.2-1
+- Update to 0.6.2
+
 * Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
