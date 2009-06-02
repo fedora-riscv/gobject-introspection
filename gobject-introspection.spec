@@ -22,6 +22,7 @@ BuildRequires:  bison
 BuildRequires:  libffi-devel
 BuildRequires:  chrpath
 BuildRequires:  mesa-libGL-devel
+BuildRequires:  cairo-devel
 
 # For autogen
 BuildRequires:  gnome-common
