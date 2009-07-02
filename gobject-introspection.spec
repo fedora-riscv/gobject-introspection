@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        0.6.3
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:		Development/Libraries
@@ -50,6 +50,7 @@ Libraries and headers for gobject-introspection
 %setup -q
 
 %build
+export CFLAGS="$CFLAGS -ggdb"
 %configure
 make
 
@@ -95,6 +96,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.gz
 
 %changelog
+* Thu Jul  2 2009 Peter Robinson <pbrobinson@gmail.com> - 0.6.3-3
+- Add -ggdb temporarily so it compiles on ppc64
+
 * Thu Jul  2 2009 Peter Robinson <pbrobinson@gmail.com> - 0.6.3-2
 - Add the new source file
 
