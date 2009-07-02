@@ -2,14 +2,14 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.6.2
+Version:        0.6.3
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:		Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
-Source0:        http://ftp.acc.umu.se/pub/GNOME/sources/gobject-introspection/0.6/gobject-introspection-%{version}.tar.bz2
+Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  glib2-devel
@@ -29,12 +29,6 @@ BuildRequires:  libX11-devel
 BuildRequires:  fontconfig-devel
 BuildRequires:  libXft-devel
 BuildRequires:  freetype-devel
-
-# For autogen
-BuildRequires:  gnome-common
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
 
 %description
 GObject Introspection can scan C header and source files in order to
@@ -70,6 +64,10 @@ chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-{compiler,generate}
 # Mistake in upstream automake
 rm -f $RPM_BUILD_ROOT/%{_bindir}/barapp
 
+# Move the python modules to the correct location
+mkdir -p $RPM_BUILD_ROOT/%{python_sitearch}
+mv $RPM_BUILD_ROOT/%{_libdir}/gobject-introspection/giscanner $RPM_BUILD_ROOT/%{python_sitearch}/
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -92,10 +90,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/*
 %{_bindir}/g-ir-*
 %{_datadir}/gir-1.0
+%{_datadir}/aclocal/introspection.m4
 %{python_sitearch}/giscanner
 %{_mandir}/man1/*.gz
 
 %changelog
+* Thu Jul  2 2009 Peter Robinson <pbrobinson@gmail.com> - 0.6.3-1
+- Update to 0.6.3
+
 * Mon Jun  1 2009 Dan Williams <dcbw@redhat.com> - 0.6.2-1
 - Update to 0.6.2
 
