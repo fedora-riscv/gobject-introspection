@@ -3,13 +3,14 @@
 
 Name:           gobject-introspection
 Version:        0.6.3
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:		Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
+Patch0:		gobject-introspection-compilecrashfix.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  glib2-devel
@@ -48,11 +49,11 @@ Libraries and headers for gobject-introspection
 
 %prep
 %setup -q
+%patch0 -p1 -b .compilecrashfix
 
 %build
-export CFLAGS="$CFLAGS -ggdb"
 %configure
-make
+make V=1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -96,6 +97,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.gz
 
 %changelog
+* Mon Jul  6 2009 Peter Robinson <pbrobinson@gmail.com> - 0.6.3-4
+- Add upstream patch to fix a build crash
+
 * Thu Jul  2 2009 Peter Robinson <pbrobinson@gmail.com> - 0.6.3-3
 - Add -ggdb temporarily so it compiles on ppc64
 
