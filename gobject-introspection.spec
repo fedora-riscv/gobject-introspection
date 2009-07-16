@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        0.6.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:		Development/Libraries
@@ -97,6 +97,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.gz
 
 %changelog
+* Thu Jul  2 2009 Peter Robinson <pbrobinson@gmail.com> - 0.6.3-2
+- update sources and add patch to fix build
+
 * Thu Jul  2 2009 Peter Robinson <pbrobinson@gmail.com> - 0.6.3-1
 - Update to 0.6.3
 
