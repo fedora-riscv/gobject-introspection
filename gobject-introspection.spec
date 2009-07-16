@@ -2,14 +2,15 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.6.1
-Release:        2%{?dist}
+Version:        0.6.3
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:		Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
-Source0:        http://ftp.acc.umu.se/pub/GNOME/sources/gobject-introspection/0.6/gobject-introspection-%{version}.tar.bz2
+Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
+Patch0:		gobject-introspection-compilecrashfix.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  glib2-devel
@@ -21,12 +22,14 @@ BuildRequires:  flex
 BuildRequires:  bison
 BuildRequires:  libffi-devel
 BuildRequires:  chrpath
-
-# For autogen
-BuildRequires:  gnome-common
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
+BuildRequires:  mesa-libGL-devel
+BuildRequires:  cairo-devel
+BuildRequires:  libxml2-devel
+BuildRequires:  libXfixes-devel
+BuildRequires:  libX11-devel
+BuildRequires:  fontconfig-devel
+BuildRequires:  libXft-devel
+BuildRequires:  freetype-devel
 
 %description
 GObject Introspection can scan C header and source files in order to
@@ -46,10 +49,11 @@ Libraries and headers for gobject-introspection
 
 %prep
 %setup -q
+%patch0 -p1 -b .compilecrashfix
 
 %build
 %configure
-make
+make V=1
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -61,6 +65,10 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-{compiler,generate}
 # Mistake in upstream automake
 rm -f $RPM_BUILD_ROOT/%{_bindir}/barapp
+
+# Move the python modules to the correct location
+mkdir -p $RPM_BUILD_ROOT/%{python_sitearch}
+mv $RPM_BUILD_ROOT/%{_libdir}/gobject-introspection/giscanner $RPM_BUILD_ROOT/%{python_sitearch}/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -74,8 +82,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc COPYING
 
 %{_libdir}/lib*.so.*
-%dir %{_libdir}/girepository
-%{_libdir}/girepository/*.typelib
+%dir %{_libdir}/girepository-1.0
+%{_libdir}/girepository-1.0/*.typelib
 
 %files devel
 %defattr(-,root,root)
@@ -83,11 +91,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
 %{_bindir}/g-ir-*
-%{_datadir}/gir
+%{_datadir}/gir-1.0
+%{_datadir}/aclocal/introspection.m4
 %{python_sitearch}/giscanner
 %{_mandir}/man1/*.gz
 
 %changelog
+* Thu Jul  2 2009 Peter Robinson <pbrobinson@gmail.com> - 0.6.3-1
+- Update to 0.6.3
+
+* Mon Jun  1 2009 Dan Williams <dcbw@redhat.com> - 0.6.2-1
+- Update to 0.6.2
+
 * Tue Feb 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.1-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_11_Mass_Rebuild
 
