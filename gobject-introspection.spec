@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        0.6.3
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:		Development/Libraries
@@ -97,6 +97,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.gz
 
 %changelog
+* Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.6.3-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
 * Mon Jul  6 2009 Peter Robinson <pbrobinson@gmail.com> - 0.6.3-4
 - Add upstream patch to fix a build crash
 
