@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        0.6.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:		Development/Libraries
@@ -29,6 +29,9 @@ BuildRequires:  libX11-devel
 BuildRequires:  fontconfig-devel
 BuildRequires:  libXft-devel
 BuildRequires:  freetype-devel
+
+# temporary dep for http://bugzilla.gnome.org/show_bug.cgi?id=592968
+BuildRequires: libtool
 
 %description
 GObject Introspection can scan C header and source files in order to
@@ -95,6 +98,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.gz
 
 %changelog
+* Fri Aug 28 2009 Colin Walters <walters@verbum.org> - 0.6.4-2
+- Add dep on libtool temporarily
+
 * Mon Aug 26 2009 Colin Walters <walters@verbum.org> - 0.6.4-1
 - New upstream 0.6.4
 - Drop upstreamed build fix patch 
