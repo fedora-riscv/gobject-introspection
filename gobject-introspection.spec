@@ -2,8 +2,8 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.6.4
-Release:        2%{?dist}
+Version:        0.6.5
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:		Development/Libraries
@@ -29,9 +29,6 @@ BuildRequires:  libX11-devel
 BuildRequires:  fontconfig-devel
 BuildRequires:  libXft-devel
 BuildRequires:  freetype-devel
-
-# temporary dep for http://bugzilla.gnome.org/show_bug.cgi?id=592968
-BuildRequires: libtool
 
 %description
 GObject Introspection can scan C header and source files in order to
@@ -98,6 +95,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.gz
 
 %changelog
+* Fri Sep 11 2009 Colin Walters <walters@verbum.org> - 0.6.5-1
+- New upstream
+- Drop libtool dep 
+
 * Fri Aug 28 2009 Colin Walters <walters@verbum.org> - 0.6.4-2
 - Add dep on libtool temporarily
 
