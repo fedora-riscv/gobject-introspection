@@ -2,7 +2,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.6.5
+Version:        0.6.7
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -95,6 +95,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.gz
 
 %changelog
+* Tue Dec 22 2009 Matthias Clasen <mclasen@redhat.com> - 0.6.7-1
+- Update to 0.6.7
+
 * Fri Sep 11 2009 Colin Walters <walters@verbum.org> - 0.6.5-1
 - New upstream
 - Drop libtool dep 
