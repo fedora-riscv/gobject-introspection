@@ -90,6 +90,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/*
 %{_bindir}/g-ir-*
 %{_datadir}/gir-1.0
+%{_datadir}/gobject-introspection-1.0
 %{_datadir}/aclocal/introspection.m4
 %{python_sitearch}/giscanner
 %{_mandir}/man1/*.gz
