@@ -1,16 +1,29 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
+%define         alphatag    20100115git
+
 Name:           gobject-introspection
-Version:        0.6.7
+Version:        0.6.7.%{alphatag}
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:		Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
-Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
+#Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
+# git clone git://git.gnome.org/gobject-introspection
+# rm -fr gobject-introspection/.git
+# tar -cvzf gobject-introspection.tar.gz gobject-introspection/
+Source0:        %{name}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+
+
+# git snapshot requires some other fun stuff
+BuildRequires:  autoconf >= 2.53
+BuildRequires:  automake >= 1.10
+BuildRequires:  gnome-common >= 2.2.0
+BuildRequires:  libtool >= 1.4.3
 
 BuildRequires:  glib2-devel
 BuildRequires:  python-devel >= 2.5
@@ -47,7 +60,12 @@ Requires: pkgconfig
 Libraries and headers for gobject-introspection
 
 %prep
-%setup -q
+#%setup -q
+
+# git snapshot has a different directory name:
+%setup -q -n %{name}
+# needed to build the git tree
+/bin/sh autogen.sh
 
 %build
 %configure
@@ -96,6 +114,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.gz
 
 %changelog
+* Thu Jan 15 2010 Adam Miller <maxamillion@fedoraproject.org> - 0.6.7.20100115git-1
+- Update to git snapshot for rawhide 
+
 * Tue Dec 22 2009 Matthias Clasen <mclasen@redhat.com> - 0.6.7-1
 - Update to 0.6.7
 
