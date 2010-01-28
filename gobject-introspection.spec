@@ -1,10 +1,10 @@
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
-%define         alphatag    20100115git
+%define         alphatag    20100128git
 
 Name:           gobject-introspection
-Version:        0.6.7.%{alphatag}
+Version:        0.6.8.%{alphatag}
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -114,6 +114,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.gz
 
 %changelog
+* Thu Jan 28 2010 Adam Miller <maxamillion@fedoraproject.org> - 0.6.8.20100128git-1
+- Update to new git snapshot
+- Fix Version tag to comply with correct naming use with alphatag
+
 * Thu Jan 15 2010 Adam Miller <maxamillion@fedoraproject.org> - 0.6.7.20100115git-1
 - Update to git snapshot for rawhide 
 
