@@ -4,8 +4,8 @@
 %define         alphatag    20100128git
 
 Name:           gobject-introspection
-Version:        0.6.8.%{alphatag}
-Release:        1%{?dist}
+Version:        0.6.8
+Release:        0.1-%alphatag}
 Summary:        Introspection system for GObject-based libraries
 
 Group:		Development/Libraries
@@ -114,7 +114,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.gz
 
 %changelog
-* Thu Jan 28 2010 Adam Miller <maxamillion@fedoraproject.org> - 0.6.8.20100128git-1
+* Thu Jan 28 2010 Adam Miller <maxamillion@fedoraproject.org> - 0.6.8-0.1.20100128git
 - Update to new git snapshot
 - Fix Version tag to comply with correct naming use with alphatag
 
