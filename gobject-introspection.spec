@@ -5,7 +5,7 @@
 
 Name:           gobject-introspection
 Version:        0.6.8
-Release:        0.1-%alphatag}
+Release:        0.1.%alphatag}
 Summary:        Introspection system for GObject-based libraries
 
 Group:		Development/Libraries
