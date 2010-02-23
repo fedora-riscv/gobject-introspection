@@ -43,6 +43,7 @@ Group: Development/Libraries
 Requires: %name = %{version}-%{release}
 Requires: glib2-devel
 Requires: pkgconfig
+Requires: libffi-devel
 
 %description devel
 Libraries and headers for gobject-introspection
