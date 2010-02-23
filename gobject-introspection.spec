@@ -11,6 +11,7 @@ Summary:        Introspection system for GObject-based libraries
 Group:		Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
+#VCS:           git://git.gnome.org/gobject-introspection
 #Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
 # git clone git://git.gnome.org/gobject-introspection
 # rm -fr gobject-introspection/.git
