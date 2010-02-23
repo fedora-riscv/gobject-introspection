@@ -5,7 +5,7 @@
 
 Name:           gobject-introspection
 Version:        0.6.8
-Release:        0.1.%{alphatag}
+Release:        1.1.%{alphatag}
 Summary:        Introspection system for GObject-based libraries
 
 Group:		Development/Libraries
@@ -55,6 +55,7 @@ Summary: Libraries and headers for gobject-introspection
 Group: Development/Libraries
 Requires: %name = %{version}-%{release}
 Requires: glib2-devel
+Requires: libffi-devel
 Requires: pkgconfig
 
 %description devel
@@ -115,6 +116,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.gz
 
 %changelog
+* Tue Feb 23 2010 Colin Walters <walters@verbum.org>
+- devel pkg should require libffi-devel
+
 * Thu Jan 28 2010 Adam Miller <maxamillion@fedoraproject.org> - 0.6.8-0.1.20100128git
 - Update to new git snapshot
 - Fix Version tag to comply with correct naming use with alphatag
