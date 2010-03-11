@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        0.6.8
-Release:        0.2.20100311git2cc97351
+Release:        0.3.20100311git2cc97351
 Summary:        Introspection system for GObject-based libraries
 
 Group:		Development/Libraries
@@ -113,6 +113,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.gz
 
 %changelog
+* Thu Mar 11 2010 Colin Walters <walters@verbum.org> - 0.6.8-0.3.20100311git2cc97351
+- rebuilt
+
 * Thu Mar 11 2010 Colin Walters <walters@verbum.org>
 - New upstream snapshot
 - rm unneeded rm
