@@ -2,31 +2,15 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.6.8
-Release:        0.3.20100311git2cc97351
+Version:        0.6.9
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
-Group:		Development/Libraries
+Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
-#VCS: git:git://git.gnome.org/gobject-introspection
-#Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
-# git clone git://git.gnome.org/gobject-introspection
-# rm -fr gobject-introspection/.git
-# tar -cvzf gobject-introspection.tar.gz gobject-introspection/
-Source0:        gobject-introspection-0.6.8git2cc97351.tar.bz2
+Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-
-
-# git snapshot requires some other fun stuff
-BuildRequires:  autoconf >= 2.53
-BuildRequires: libtool
-BuildRequires: automake
-BuildRequires: autoconf
-BuildRequires: gnome-common
-BuildRequires:  automake >= 1.10
-BuildRequires:  gnome-common >= 2.2.0
-BuildRequires:  libtool >= 1.4.3
 
 BuildRequires:  glib2-devel
 BuildRequires:  python-devel >= 2.5
@@ -63,13 +47,10 @@ Requires: pkgconfig
 Libraries and headers for gobject-introspection
 
 %prep
-#%setup -q
-
-# git snapshot has a different directory name:
-%setup -q -n gobject-introspection-0.6.8git2cc97351
+%setup -q
 
 %build
-./autogen.sh && %configure
+%configure
 make V=1
 
 %install
@@ -80,6 +61,8 @@ make install DESTDIR=$RPM_BUILD_ROOT
 find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
 find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-{compiler,generate}
+# Mistake in upstream automake
+rm -f $RPM_BUILD_ROOT/%{_bindir}/barapp
 
 # Move the python modules to the correct location
 mkdir -p $RPM_BUILD_ROOT/%{python_sitearch}
@@ -107,12 +90,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/*
 %{_bindir}/g-ir-*
 %{_datadir}/gir-1.0
-%{_datadir}/gobject-introspection-1.0
 %{_datadir}/aclocal/introspection.m4
 %{python_sitearch}/giscanner
 %{_mandir}/man1/*.gz
 
 %changelog
+* Wed Mar 24 2010 Adam Miller <maxamillion@fedoraproject.org> - 0.6.9-1
+- Update to latest upstream release 0.6.9
+
 * Thu Mar 11 2010 Colin Walters <walters@verbum.org> - 0.6.8-0.3.20100311git2cc97351
 - rebuilt
 
