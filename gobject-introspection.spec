@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        0.6.9
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
@@ -90,11 +90,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/*
 %{_bindir}/g-ir-*
 %{_datadir}/gir-1.0
+%dir %{_datadir}/gobject-introspection-1.0
+%{_datadir}/gobject-introspection-1.0/*
 %{_datadir}/aclocal/introspection.m4
 %{python_sitearch}/giscanner
 %{_mandir}/man1/*.gz
 
 %changelog
+* Wed Mar 24 2010 Adam Miller <maxamillion@fedoraproject.org> - 0.6.9-2
+- Added newly owned files (gobject-introspection-1.0 directory)
+
 * Wed Mar 24 2010 Adam Miller <maxamillion@fedoraproject.org> - 0.6.9-1
 - Update to latest upstream release 0.6.9
 
