@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        0.6.9
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
@@ -61,12 +61,6 @@ make install DESTDIR=$RPM_BUILD_ROOT
 find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
 find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-{compiler,generate}
-# Mistake in upstream automake
-rm -f $RPM_BUILD_ROOT/%{_bindir}/barapp
-
-# Move the python modules to the correct location
-mkdir -p $RPM_BUILD_ROOT/%{python_sitearch}
-mv $RPM_BUILD_ROOT/%{_libdir}/gobject-introspection/giscanner $RPM_BUILD_ROOT/%{python_sitearch}/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -86,6 +80,8 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(-,root,root)
 %{_libdir}/lib*.so
+%dir %{_libdir}/gobject-introspection
+%{_libdir}/gobject-introspection/*
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
 %{_bindir}/g-ir-*
@@ -93,10 +89,17 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/gobject-introspection-1.0
 %{_datadir}/gobject-introspection-1.0/*
 %{_datadir}/aclocal/introspection.m4
-%{python_sitearch}/giscanner
 %{_mandir}/man1/*.gz
 
 %changelog
+* Thu Mar 25 2010 Colin Walters <walters@verbum.org> - 0.6.9-3
+- Move python library back into /usr/lib/gobject-introspection.  I put
+  it there upstream for a reason, namely that apps need to avoid
+  polluting the global Python site-packages with bits of their internals.
+  It's not a public API.
+  
+  Possibly resolves bug #569885
+
 * Wed Mar 24 2010 Adam Miller <maxamillion@fedoraproject.org> - 0.6.9-2
 - Added newly owned files (gobject-introspection-1.0 directory)
 
