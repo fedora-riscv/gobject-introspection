@@ -2,14 +2,14 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.6.9
-Release:        3%{?dist}
+Version:        0.6.12
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
-Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
+Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  glib2-devel
@@ -92,6 +92,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.gz
 
 %changelog
+* Wed May 24 2010 Colin Walters <walters@verbum.org> - 0.6.12-1
+- Update to latest upstream release 0.6.12
+
 * Thu Mar 25 2010 Colin Walters <walters@verbum.org> - 0.6.9-3
 - Move python library back into /usr/lib/gobject-introspection.  I put
   it there upstream for a reason, namely that apps need to avoid
