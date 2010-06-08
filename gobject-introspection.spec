@@ -2,7 +2,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.6.12
+Version:        0.6.14
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -10,7 +10,6 @@ Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  glib2-devel
 BuildRequires:  python-devel >= 2.5
@@ -54,16 +53,12 @@ Libraries and headers for gobject-introspection
 make V=1
 
 %install
-rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
 # Die libtool, die.
 find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
 find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-{compiler,generate}
-
-%clean
-rm -rf $RPM_BUILD_ROOT
 
 %post -p /sbin/ldconfig
 
@@ -92,6 +87,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/*.gz
 
 %changelog
+* Tue Jun  8 2010 Matthias Clasen <mclasen@redhat.com> - 0.6.14-1
+- Update to 0.6.14
+
 * Wed May 24 2010 Colin Walters <walters@verbum.org> - 0.6.12-1
 - Update to latest upstream release 0.6.12
 
