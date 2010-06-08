@@ -9,7 +9,7 @@ Summary:        Introspection system for GObject-based libraries
 Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
-Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.gz
+Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
 
 BuildRequires:  glib2-devel
 BuildRequires:  python-devel >= 2.5
