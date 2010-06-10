@@ -3,13 +3,15 @@
 
 Name:           gobject-introspection
 Version:        0.6.14
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
+
+Obsoletes:	gir-repository
 
 BuildRequires:  glib2-devel
 BuildRequires:  python-devel >= 2.5
@@ -41,6 +43,7 @@ Group: Development/Libraries
 Requires: %name = %{version}-%{release}
 Requires: glib2-devel
 Requires: pkgconfig
+Obsoletes: gir-repository-devel
 
 %description devel
 Libraries and headers for gobject-introspection
@@ -87,6 +90,9 @@ chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-{compiler,generate}
 %{_mandir}/man1/*.gz
 
 %changelog
+* Thu Jun 10 2010 Colin Walters <walters@pocket> - 0.6.14-2
+- Obsolete gir-repository{,-devel}
+
 * Tue Jun  8 2010 Matthias Clasen <mclasen@redhat.com> - 0.6.14-1
 - Update to 0.6.14
 
