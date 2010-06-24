@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        0.6.14
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
@@ -91,6 +91,9 @@ chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-{compiler,generate}
 %{_mandir}/man1/*.gz
 
 %changelog
+* Thu Jun 24 2010 Colin Walters <walters@pocket> - 0.6.14-3
+- rebuild to pick up new glib changes
+
 * Thu Jun 10 2010 Colin Walters <walters@pocket> - 0.6.14-2
 - Obsolete gir-repository{,-devel}
 
