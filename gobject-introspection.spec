@@ -2,27 +2,24 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.6.14
-Release:        3%{?dist}
+Version:        0.9.0
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:		git:git://git.gnome.org/gobject-introspection
-Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.bz2
+Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.gz
 
 Obsoletes:	gir-repository
 
 BuildRequires:  glib2-devel
 BuildRequires:  python-devel >= 2.5
 BuildRequires:  gettext
-BuildRequires:  intltool
-BuildRequires:  gtk-doc
 BuildRequires:  flex
 BuildRequires:  bison
 BuildRequires:  libffi-devel
-BuildRequires:  chrpath
 BuildRequires:  mesa-libGL-devel
 BuildRequires:  cairo-devel
 BuildRequires:  libxml2-devel
@@ -31,6 +28,10 @@ BuildRequires:  libX11-devel
 BuildRequires:  fontconfig-devel
 BuildRequires:  libXft-devel
 BuildRequires:  freetype-devel
+# Bootstrap requirements
+BuildRequires:  gnome-common
+BuildRequires:  intltool
+BuildRequires:  gtk-doc
 
 %description
 GObject Introspection can scan C header and source files in order to
@@ -53,8 +54,9 @@ Libraries and headers for gobject-introspection
 %setup -q
 
 %build
-%configure
-make V=1
+(if ! test -x configure; then AUTOGEN_SUBDIR_MODE=1 NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;
+ %configure $CONFIGFLAGS)
+make V=1 %{?_smp_mflags}
 
 %install
 make install DESTDIR=$RPM_BUILD_ROOT
@@ -62,7 +64,6 @@ make install DESTDIR=$RPM_BUILD_ROOT
 # Die libtool, die.
 find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
 find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
-chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-{compiler,generate}
 
 %post -p /sbin/ldconfig
 
@@ -91,6 +92,10 @@ chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-{compiler,generate}
 %{_mandir}/man1/*.gz
 
 %changelog
+* Tue Jun 29 2010 Colin Walters <walters@verbum.org> - 0.9.0-1
+- New upstream development release
+- Update to support building git snapshot directly
+
 * Thu Jun 24 2010 Colin Walters <walters@pocket> - 0.6.14-3
 - rebuild to pick up new glib changes
 
