@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        0.9.0
-Release: 1.3.20100629gitf0599b0a%{?dist}
+Release: 1.4.20100629gitf0599b0a%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
@@ -91,8 +91,13 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gobject-introspection-1.0/*
 %{_datadir}/aclocal/introspection.m4
 %{_mandir}/man1/*.gz
+%dir %{_datadir}/gtk-doc/html/gi
+%{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Tue Jun 29 2010 Colin Walters <walters@verbum.org> - 0.9.0-1.4.20100629gitf0599b0a
+- Add gtk-doc to files
+
 * Tue Jun 29 2010 Colin Walters <walters@verbum.org>
 - Switch to git snapshot; I forgot to enable gtk-doc in the last
   tarball.
