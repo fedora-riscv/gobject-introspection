@@ -3,14 +3,15 @@
 
 Name:           gobject-introspection
 Version:        0.9.0
-Release:        1%{?dist}
+Release: 1.2.20100629gitf0599b0a%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:		git:git://git.gnome.org/gobject-introspection
-Source0:        ftp://ftp.gnome.org/pub/gnome/sources/%{name}/0.6/%{name}-%{version}.tar.gz
+# This source was pulled from a git tag: GOBJECT_INTROSPECTION_0_9_0
+Source0: gobject-introspection-0.9.0gitf0599b0a.tar.bz2
 
 Obsoletes:	gir-repository
 
@@ -51,7 +52,7 @@ Obsoletes: gir-repository-devel
 Libraries and headers for gobject-introspection
 
 %prep
-%setup -q
+%setup -q -n gobject-introspection-0.9.0gitf0599b0a
 
 %build
 (if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;
@@ -92,6 +93,10 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_mandir}/man1/*.gz
 
 %changelog
+* Tue Jun 29 2010 Colin Walters <walters@verbum.org>
+- Switch to git snapshot; I forgot to enable gtk-doc in the last
+  tarball.
+
 * Tue Jun 29 2010 Colin Walters <walters@verbum.org> - 0.9.0-1
 - New upstream development release
 - Update to support building git snapshot directly
