@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        0.9.2
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
