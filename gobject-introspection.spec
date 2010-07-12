@@ -2,16 +2,15 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.9.0
-Release: 1.4.20100629gitf0599b0a%{?dist}
+Version:        0.9.2
+Release:	1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:		git:git://git.gnome.org/gobject-introspection
-# This source was pulled from a git tag: GOBJECT_INTROSPECTION_0_9_0
-Source0: gobject-introspection-0.9.0gitf0599b0a.tar.bz2
+Source0:	gobject-introspection-0.9.2.tar.gz
 
 Obsoletes:	gir-repository
 
@@ -52,7 +51,7 @@ Obsoletes: gir-repository-devel
 Libraries and headers for gobject-introspection
 
 %prep
-%setup -q -n gobject-introspection-0.9.0gitf0599b0a
+%setup -q -n gobject-introspection-0.9.2
 
 %build
 (if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;
@@ -95,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Mon Jul 12 2010 Colin Walters <walters@verbum.org> - 0.9.2-1
+- New upstream (unstable series) release; requires rebuilds
+
 * Tue Jun 29 2010 Colin Walters <walters@verbum.org> - 0.9.0-1.4.20100629gitf0599b0a
 - Add gtk-doc to files
 
