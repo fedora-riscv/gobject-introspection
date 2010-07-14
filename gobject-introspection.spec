@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        0.9.2
-Release:	2%{?dist}
+Release:	3%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
@@ -11,6 +11,7 @@ License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:		git:git://git.gnome.org/gobject-introspection
 Source0:	gobject-introspection-0.9.2.tar.gz
+Patch0:		0001-girepository-Actually-verify-header-of-loaded-typeli.patch
 
 Obsoletes:	gir-repository
 
@@ -52,6 +53,7 @@ Libraries and headers for gobject-introspection
 
 %prep
 %setup -q -n gobject-introspection-0.9.2
+%patch1 -p1
 
 %build
 (if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;
@@ -94,6 +96,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Wed Jul 14 2010 Colin Walters <walters@verbum.org> - 0.9.2-3
+- Backport patch from upstream for better errors
+
 * Mon Jul 12 2010 Colin Walters <walters@verbum.org> - 0.9.2-1
 - New upstream (unstable series) release; requires rebuilds
 
