@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        0.9.2
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
@@ -53,7 +53,7 @@ Libraries and headers for gobject-introspection
 
 %prep
 %setup -q -n gobject-introspection-0.9.2
-%patch1 -p1
+%patch0 -p1
 
 %build
 (if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;
@@ -96,7 +96,7 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
-* Wed Jul 14 2010 Colin Walters <walters@verbum.org> - 0.9.2-3
+* Wed Jul 14 2010 Colin Walters <walters@verbum.org> - 0.9.2-4
 - Backport patch from upstream for better errors
 
 * Mon Jul 12 2010 Colin Walters <walters@verbum.org> - 0.9.2-1
