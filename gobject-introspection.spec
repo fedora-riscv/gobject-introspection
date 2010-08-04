@@ -90,11 +90,11 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gobject-introspection-1.0/*
 %{_datadir}/aclocal/introspection.m4
 %{_mandir}/man1/*.gz
-%dir %{_datadir}/gtk-doc/html/gi
-%{_datadir}/gtk-doc/html/gi/*
+#%dir %{_datadir}/gtk-doc/html/gi
+#%{_datadir}/gtk-doc/html/gi/*
 
 %changelog
-* Tue Aug  3 2010 MAtthias Clasen <mclasen@redhat.com> - 0.9.3-1
+* Tue Aug  3 2010 Matthias Clasen <mclasen@redhat.com> - 0.9.3-1
 - Update to 0.9.3
 
 * Mon Jul 26 2010 David Malcolm <dmalcolm@redhat.com> - 0.9.2-5
