@@ -2,7 +2,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.9.2
+Version:        0.9.3
 Release:	5%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -10,12 +10,7 @@ Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:		git:git://git.gnome.org/gobject-introspection
-Source0:	gobject-introspection-0.9.2.tar.gz
-Patch0:		0001-girepository-Actually-verify-header-of-loaded-typeli.patch
-
-# rhbz#617782
-# Taken from http://bugzilla-attachments.gnome.org/attachment.cgi?id=166409
-Patch1:         py2.7-compat.patch
+Source0:	gobject-introspection-0.9.3.tar.gz
 
 Obsoletes:	gir-repository
 
@@ -56,9 +51,7 @@ Obsoletes: gir-repository-devel
 Libraries and headers for gobject-introspection
 
 %prep
-%setup -q -n gobject-introspection-0.9.2
-%patch0 -p1
-%patch1 -p1
+%setup -q -n gobject-introspection-0.9.3
 
 %build
 (if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;
@@ -101,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Tue Aug  3 2010 MAtthias Clasen <mclasen@redhat.com> - 0.9.3-1
+- Update to 0.9.3
+
 * Mon Jul 26 2010 David Malcolm <dmalcolm@redhat.com> - 0.9.2-5
 - Cherrypick patch for python 2.7 compatibility (patch 1; rhbz#617782)
 
