@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        0.9.3
-Release:	5%{?dist}
+Release:	6%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
@@ -61,6 +61,11 @@ make V=1 %{?_smp_mflags}
 %install
 make install DESTDIR=$RPM_BUILD_ROOT
 
+# Strip out the test libraries; these will go away upstream
+rm $RPM_BUILD_ROOT/%{_libdir}/libgirepository-{everything,gimarshallingtests}*.so*
+rm $RPM_BUILD_ROOT/%{_libdir}/girepository-1.0/{GIMarshallingTests,Everything}*.typelib
+rm $RPM_BUILD_ROOT/%{_datadir}/gir-1.0/{GIMarshallingTests,Everything}*.gir
+
 # Die libtool, die.
 find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
 find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
@@ -94,6 +99,11 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 #%{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Thu Sep  2 2010 Colin Walters <walters@verbum.org> - 0.9.3-6
+- Strip out test libraries; they're gone in upstream git, and
+  create a dependency on cairo (which requires libX11, which makes
+  server operating system builders freak out).
+
 * Tue Aug  3 2010 Matthias Clasen <mclasen@redhat.com> - 0.9.3-1
 - Update to 0.9.3
 
