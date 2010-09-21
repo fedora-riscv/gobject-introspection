@@ -2,15 +2,15 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.9.3
-Release:	6%{?dist}
+Version:        0.9.6
+Release:	1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:		git:git://git.gnome.org/gobject-introspection
-Source0:	gobject-introspection-0.9.3.tar.gz
+Source0:	gobject-introspection-%{version}.tar.bz2
 
 Obsoletes:	gir-repository
 
@@ -51,7 +51,7 @@ Obsoletes: gir-repository-devel
 Libraries and headers for gobject-introspection
 
 %prep
-%setup -q -n gobject-introspection-0.9.3
+%setup -q
 
 %build
 (if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;
@@ -60,11 +60,6 @@ make V=1 %{?_smp_mflags}
 
 %install
 make install DESTDIR=$RPM_BUILD_ROOT
-
-# Strip out the test libraries; these will go away upstream
-rm $RPM_BUILD_ROOT/%{_libdir}/libgirepository-{everything,gimarshallingtests}*.so*
-rm $RPM_BUILD_ROOT/%{_libdir}/girepository-1.0/{GIMarshallingTests,Everything}*.typelib
-rm $RPM_BUILD_ROOT/%{_datadir}/gir-1.0/{GIMarshallingTests,Everything}*.gir
 
 # Die libtool, die.
 find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
@@ -99,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 #%{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Tue Sep 21 2010 Owen Taylor <otaylor@redhat.com> - 0.9.6-1
+- Update to 0.9.6
+
 * Thu Sep  2 2010 Colin Walters <walters@verbum.org> - 0.9.3-6
 - Strip out test libraries; they're gone in upstream git, and
   create a dependency on cairo (which requires libX11, which makes
