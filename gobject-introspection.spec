@@ -2,7 +2,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.9.8
+Version:        0.9.9
 Release:	1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -90,10 +90,13 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gobject-introspection-1.0/*
 %{_datadir}/aclocal/introspection.m4
 %{_mandir}/man1/*.gz
-#%dir %{_datadir}/gtk-doc/html/gi
-#%{_datadir}/gtk-doc/html/gi/*
+%dir %{_datadir}/gtk-doc/html/gi
+%{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Thu Sep 30 2010 Colin Walters <walters@verbum.org> - 0.9.9-1
+- Update to 0.9.9
+
 * Wed Sep 29 2010 Matthias Clasen <mclasen@redhat.com> - 0.9.8-1
 - Update to 0.9.8
 
