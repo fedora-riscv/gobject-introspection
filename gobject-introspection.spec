@@ -2,7 +2,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.9.10
+Version:        0.9.12
 Release:	1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
