@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        0.9.3
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
@@ -73,13 +73,15 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %defattr(-,root,root,-)
 %doc COPYING
 
-%{_libdir}/lib*.so.*
+%{_libdir}/libgirepository-1.0.so.*
 %dir %{_libdir}/girepository-1.0
 %{_libdir}/girepository-1.0/*.typelib
 
 %files devel
 %defattr(-,root,root)
 %{_libdir}/lib*.so
+%{_libdir}/libgirepository-everything-1.0.so.*
+%{_libdir}/libgirepository-gimarshallingtests-1.0.so.*
 %dir %{_libdir}/gobject-introspection
 %{_libdir}/gobject-introspection/*
 %{_libdir}/pkgconfig/*
@@ -94,6 +96,10 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 #%{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Mon Oct 25 2010 Colin Walters <walters@verbum.org> - 0.9.3-2
+- Move test libraries into -devel; they pull in a cairo dependency,
+  which is unnecessary.
+
 * Tue Aug  3 2010 Matthias Clasen <mclasen@redhat.com> - 0.9.3-1
 - Update to 0.9.3
 
