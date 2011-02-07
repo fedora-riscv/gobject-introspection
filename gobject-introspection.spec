@@ -2,7 +2,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.10.1
+Version:        0.10.2
 Release:	1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -94,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Mon Feb  7 2011 Colin Walters <walters@verbum.org> - 0.10.2-1
+- Update to 0.10.2
+
 * Wed Jan 12 2011 Colin Walters <walters@verbum.org> - 0.10.1-1
 - Update to 0.10.1
 
