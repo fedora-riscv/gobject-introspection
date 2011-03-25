@@ -2,7 +2,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.10.4
+Version:        0.10.5
 Release:	1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -21,7 +21,7 @@ BuildRequires:  flex
 BuildRequires:  bison
 BuildRequires:  libffi-devel
 BuildRequires:  mesa-libGL-devel
-BuildRequires:  cairo-devel
+BuildRequires:  cairo-gobject-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libXfixes-devel
 BuildRequires:  libX11-devel
@@ -94,6 +94,13 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Fri Mar 25 2011 Colin Walters <walters@verbum.org> - 0.10.5-1
+- New upstream release, fixes cairo.gir
+  Necessary to avoid gnome-shell having a cairo-devel dependency.
+- Also add cairo-gobject-devel dependency, since we really want
+  the cairo typelib to link to GObject, since anyone using
+  introspection has it anyways.
+
 * Thu Mar 10 2011 Colin Walters <walters@verbum.org> - 0.10.4-1
 - Update to 0.10.4
 
