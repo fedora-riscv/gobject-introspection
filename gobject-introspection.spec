@@ -2,7 +2,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.10.5
+Version:        0.10.6
 Release:	1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -94,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Fri Mar 25 2011 Owen Taylor <otaylor@redhat.com> - 0.10.6-1
+- New upstream release to fix missing cairo typelib
+
 * Fri Mar 25 2011 Colin Walters <walters@verbum.org> - 0.10.5-1
 - New upstream release, fixes cairo.gir
   Necessary to avoid gnome-shell having a cairo-devel dependency.
