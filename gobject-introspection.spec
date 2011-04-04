@@ -2,17 +2,17 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.10.6
-Release:	1%{?dist}
+Version:        0.10.7
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
-#VCS:		git:git://git.gnome.org/gobject-introspection
-Source0:	gobject-introspection-%{version}.tar.bz2
+#VCS:           git:git://git.gnome.org/gobject-introspection
+Source0:        gobject-introspection-%{version}.tar.bz2
 
-Obsoletes:	gir-repository
+Obsoletes:      gir-repository
 
 BuildRequires:  glib2-devel
 BuildRequires:  python-devel >= 2.5
@@ -94,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Mon Apr  4 2011 Matthias Clasen <mclasen@redhat.com> - 0.10.7-1
+- Update to 0.10.7
+
 * Fri Mar 25 2011 Owen Taylor <otaylor@redhat.com> - 0.10.6-1
 - New upstream release to fix missing cairo typelib
 
