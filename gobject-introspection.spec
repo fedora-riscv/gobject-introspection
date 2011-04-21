@@ -2,17 +2,17 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        0.10.3
-Release:	1%{?dist}
+Version:        0.10.7
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
-#VCS:		git:git://git.gnome.org/gobject-introspection
-Source0:	gobject-introspection-%{version}.tar.bz2
+#VCS:           git:git://git.gnome.org/gobject-introspection
+Source0:        gobject-introspection-%{version}.tar.bz2
 
-Obsoletes:	gir-repository
+Obsoletes:      gir-repository
 
 BuildRequires:  glib2-devel
 BuildRequires:  python-devel >= 2.5
@@ -21,7 +21,7 @@ BuildRequires:  flex
 BuildRequires:  bison
 BuildRequires:  libffi-devel
 BuildRequires:  mesa-libGL-devel
-BuildRequires:  cairo-devel
+BuildRequires:  cairo-gobject-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libXfixes-devel
 BuildRequires:  libX11-devel
@@ -94,8 +94,24 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Mon Apr  4 2011 Matthias Clasen <mclasen@redhat.com> - 0.10.7-1
+- Update to 0.10.7
+
+* Fri Mar 25 2011 Owen Taylor <otaylor@redhat.com> - 0.10.6-1
+- New upstream release to fix missing cairo typelib
+
+* Fri Mar 25 2011 Colin Walters <walters@verbum.org> - 0.10.5-1
+- New upstream release, fixes cairo.gir
+  Necessary to avoid gnome-shell having a cairo-devel dependency.
+- Also add cairo-gobject-devel dependency, since we really want
+  the cairo typelib to link to GObject, since anyone using
+  introspection has it anyways.
+
+* Thu Mar 10 2011 Colin Walters <walters@verbum.org> - 0.10.4-1
+- Update to 0.10.4
+
 * Wed Feb 23 2011 Colin Walters <walters@verbum.org> - 0.10.3-1
-- New upstream version
+- Update to 0.10.3
 
 * Tue Feb 08 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.10.2-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
