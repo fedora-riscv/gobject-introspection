@@ -2,7 +2,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        1.29.16
+Version:        1.29.17
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -70,7 +70,6 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %doc COPYING
 
 %{_libdir}/lib*.so.*
@@ -78,7 +77,6 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_libdir}/girepository-1.0/*.typelib
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/lib*.so
 %dir %{_libdir}/gobject-introspection
 %{_libdir}/gobject-introspection/*
@@ -94,6 +92,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Tue Aug 30 2011 Matthias Clasen <mclasen@redhat.com> - 1.29.17-1
+- Update to 1.29.17
+
 * Wed Jul 27 2011 Matthias Clasen <mclasen@redhat.com> - 1.29.16-1
 - Update to 1.29.16
 
