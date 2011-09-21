@@ -2,7 +2,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        1.29.0
+Version:        1.30.0
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -10,7 +10,7 @@ Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:           git:git://git.gnome.org/gobject-introspection
-Source0:        http://download.gnome.org/sources/gobject-introspection/1.29/%{name}-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/gobject-introspection/1.30/%{name}-%{version}.tar.xz
 
 Obsoletes:      gir-repository
 
@@ -70,7 +70,6 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
 %doc COPYING
 
 %{_libdir}/lib*.so.*
@@ -78,7 +77,6 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_libdir}/girepository-1.0/*.typelib
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/lib*.so
 %dir %{_libdir}/gobject-introspection
 %{_libdir}/gobject-introspection/*
@@ -94,6 +92,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Tue Sep 20 2011 Matthias Clasen <mclasen@redhat.com> - 1.30.0-1
+- Update to 1.30.0
+
 * Fri Jun 17 2011 Tomas Bzatek <tbzatek@redhat.com> - 1.29.0-1
 - Update to 1.29.0
 
