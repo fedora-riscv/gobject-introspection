@@ -92,6 +92,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Mon Sep 26 2011 Ray <rstrode@redhat.com> - 1.30.0-1
+- Update to 1.30.0
+
 * Tue Sep 20 2011 Matthias Clasen <mclasen@redhat.com> - 1.30.0-1
 - Update to 1.30.0
 
