@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        1.31.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
@@ -45,6 +45,8 @@ Group: Development/Libraries
 Requires: %name = %{version}-%{release}
 Requires: glib2-devel
 Requires: pkgconfig
+# Not always, but whatever, it's a tiny dep to pull in
+Requires: libtool
 Obsoletes: gir-repository-devel
 
 %description devel
@@ -92,6 +94,10 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Wed Nov 16 2011 Colin Walters <walters@verbum.org> - 1.31.0-2
+- -devel package requires libtool
+  https://bugzilla.redhat.com/show_bug.cgi?id=613466
+
 * Wed Nov  2 2011 Matthias Clasen <mclasen@redhat.com> - 1.31.0-1
 - Update to 1.31.0
 
