@@ -11,6 +11,7 @@ License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:           git:git://git.gnome.org/gobject-introspection
 Source0:        http://download.gnome.org/sources/gobject-introspection/1.31/%{name}-%{version}.tar.xz
+Patch0:         gobject-introspection-1.30.0-749604.patch
 
 Obsoletes:      gir-repository
 
@@ -54,6 +55,7 @@ Libraries and headers for gobject-introspection
 
 %prep
 %setup -q
+%patch0 -p1 -b .538194
 
 %build
 (if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;
@@ -94,12 +96,18 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Mon Dec 05 2011 Karsten Hopp <karsten@redhat.com> 1.31.0-2
+- add fix for PPC failure, bugzilla 749604
+
 * Wed Nov 16 2011 Colin Walters <walters@verbum.org> - 1.31.0-2
 - -devel package requires libtool
   https://bugzilla.redhat.com/show_bug.cgi?id=613466
 
 * Wed Nov  2 2011 Matthias Clasen <mclasen@redhat.com> - 1.31.0-1
 - Update to 1.31.0
+
+* Mon Sep 26 2011 Ray <rstrode@redhat.com> - 1.30.0-1
+- Update to 1.30.0
 
 * Tue Sep 20 2011 Matthias Clasen <mclasen@redhat.com> - 1.30.0-1
 - Update to 1.30.0
