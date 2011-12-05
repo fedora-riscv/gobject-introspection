@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        1.30.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
@@ -11,6 +11,7 @@ License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:           git:git://git.gnome.org/gobject-introspection
 Source0:        http://download.gnome.org/sources/gobject-introspection/1.30/%{name}-%{version}.tar.xz
+Patch0:         gobject-introspection-1.30.0-749604.patch
 
 Obsoletes:      gir-repository
 
@@ -52,6 +53,7 @@ Libraries and headers for gobject-introspection
 
 %prep
 %setup -q
+%patch0 -p1 -b .538194
 
 %build
 (if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;
@@ -92,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Mon Dec 05 2011 Karsten Hopp <karsten@redhat.com> 1.30.0-2
+- add fix for PPC failure, bugzilla 749604
+
 * Mon Sep 26 2011 Ray <rstrode@redhat.com> - 1.30.0-1
 - Update to 1.30.0
 
