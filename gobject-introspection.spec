@@ -2,7 +2,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        1.31.1
+Version:        1.31.6
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -96,6 +96,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Tue Dec 20 2011 Matthias Clasen <mclasen@redha.com> - 1.31.6-1
+- Update to 1.31.6
+
 * Mon Dec 05 2011 Karsten Hopp <karsten@redhat.com> 1.31.0-2
 - add fix for PPC failure, bugzilla 749604
 
