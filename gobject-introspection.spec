@@ -11,7 +11,6 @@ License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:           git:git://git.gnome.org/gobject-introspection
 Source0:        http://download.gnome.org/sources/gobject-introspection/1.31/%{name}-%{version}.tar.xz
-Patch0:         gobject-introspection-1.30.0-749604.patch
 
 Obsoletes:      gir-repository
 
@@ -55,7 +54,6 @@ Libraries and headers for gobject-introspection
 
 %prep
 %setup -q
-%patch0 -p1 -b .538194
 
 %build
 (if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;
