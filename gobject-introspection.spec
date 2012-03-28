@@ -2,7 +2,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        1.31.22
+Version:        1.32.0
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -10,7 +10,7 @@ Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:           git:git://git.gnome.org/gobject-introspection
-Source0:        http://download.gnome.org/sources/gobject-introspection/1.31/%{name}-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/gobject-introspection/1.32/%{name}-%{version}.tar.xz
 
 Obsoletes:      gir-repository
 
@@ -94,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Tue Mar 27 2012 Matthias Clasen <mclasen@redhat.com> 0 1.32.0-1
+- Update to 1.32.0
+
 * Wed Mar 21 2012 Matthias Clasen <mclasen@redhat.com> 0 1.31.22-1
 - Update to 1.31.22
 
