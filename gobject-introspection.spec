@@ -2,7 +2,7 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        1.32.0
+Version:        1.32.1
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -94,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Fri Apr 20 2012 Kalev Lember <kalevlember@gmail.com> - 1.32.1-1
+- Update to 1.32.1
+
 * Tue Mar 27 2012 Matthias Clasen <mclasen@redhat.com> 0 1.32.0-1
 - Update to 1.32.0
 
