@@ -1,0 +1,34 @@
+diff --git a/gobject-introspection-1.0.pc.in b/gobject-introspection-1.0.pc.in
+index 32e7877..9613fec 100644
+--- a/gobject-introspection-1.0.pc.in
++++ b/gobject-introspection-1.0.pc.in
+@@ -14,8 +14,10 @@ girdir=${datadir}/gir-1.0
+ typelibdir=${libdir}/girepository-1.0
+ 
+ Cflags: -I${includedir}/gobject-introspection-1.0 @FFI_PC_CFLAGS@
+-Requires: glib-2.0 gobject-2.0 gmodule-2.0 gthread-2.0 @FFI_PC_PACKAGES@
+-Libs: -L${libdir} -lgirepository-1.0 @FFI_PC_LIBS@
++Requires: glib-2.0 gobject-2.0 gmodule-2.0 gthread-2.0
++Requires.private: @FFI_PC_PACKAGES@
++Libs: -L${libdir} -lgirepository-1.0
++Libs.private: @FFI_PC_LIBS@
+ 
+ Name: gobject-introspection
+ Description: GObject Introspection
+diff --git a/gobject-introspection-no-export-1.0.pc.in b/gobject-introspection-no-export-1.0.pc.in
+index 110cb75..a6d6cc6 100644
+--- a/gobject-introspection-no-export-1.0.pc.in
++++ b/gobject-introspection-no-export-1.0.pc.in
+@@ -13,8 +13,10 @@ girdir=${datadir}/gir-1.0
+ typelibdir=${libdir}/girepository-1.0
+ 
+ Cflags: -I${includedir}/gobject-introspection-1.0 @FFI_PC_CFLAGS@
+-Requires: glib-2.0 gobject-2.0 gmodule-no-export-2.0 gthread-2.0 @FFI_PC_PACKAGES@
+-Libs: -L${libdir} -lgirepository-1.0 @FFI_PC_LIBS@
++Requires: glib-2.0 gobject-2.0 gmodule-no-export-2.0 gthread-2.0
++Requires.private: @FFI_PC_PACKAGES@
++Libs: -L${libdir} -lgirepository-1.0
++Libs.private: @FFI_PC_LIBS@
+ 
+ Name: gobject-introspection
+ Description: GObject Introspection
