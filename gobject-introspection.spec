@@ -2,8 +2,8 @@
 %{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
 
 Name:           gobject-introspection
-Version:        1.32.1
-Release:        2%{?dist}
+Version:        1.33.2
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
@@ -11,9 +11,6 @@ License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:           git:git://git.gnome.org/gobject-introspection
 Source0:        http://download.gnome.org/sources/gobject-introspection/1.32/%{name}-%{version}.tar.xz
-# Move libffi to pkgconfig Requires.private, in order to
-# reduce the impact when libffi soname bump lands in rawhide.
-Patch0:         gi-pkgconfig-requires-private.patch
 
 Obsoletes:      gir-repository
 
@@ -57,7 +54,6 @@ Libraries and headers for gobject-introspection
 
 %prep
 %setup -q
-%patch0 -p1 -b .pc_requires_private
 
 %build
 (if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;
@@ -98,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Thu Jun 07 2012 Richard Hughes <hughsient@gmail.com> - 1.33.2-1
+- Update to 1.33.2
+
 * Fri Apr 27 2012 Kalev Lember <kalevlember@gmail.com> - 1.32.1-2
 - Move libffi to pkgconfig Requires.private, in order to
   reduce the impact when libffi soname bump lands in rawhide.
