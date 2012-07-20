@@ -3,7 +3,7 @@
 
 Name:           gobject-introspection
 Version:        1.33.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
@@ -11,6 +11,9 @@ License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:           git:git://git.gnome.org/gobject-introspection
 Source0:        http://download.gnome.org/sources/gobject-introspection/1.32/%{name}-%{version}.tar.xz
+
+# upstream fix
+Patch0:         keyfile-load.patch
 
 Obsoletes:      gir-repository
 
@@ -54,6 +57,7 @@ Libraries and headers for gobject-introspection
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 (if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;
@@ -94,6 +98,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Fri Jul 20 2012 Matthias Clasen <mclasen@redhat.com> - 1.33.4-2
+- Fix an unintended api break that broke vpn in gnome-shell
+
 * Tue Jul 17 2012 Richard Hughes <hughsient@gmail.com> - 1.33.4-1
 - Update to 1.33.4
 
