@@ -1,6 +1,3 @@
-%{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
-%{!?python_sitearch: %define python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
-
 Name:           gobject-introspection
 Version:        1.34.0
 Release:        1%{?dist}
@@ -43,8 +40,6 @@ things.
 Summary: Libraries and headers for gobject-introspection
 Group: Development/Libraries
 Requires: %name = %{version}-%{release}
-Requires: glib2-devel
-Requires: pkgconfig
 # Not always, but whatever, it's a tiny dep to pull in
 Requires: libtool
 Obsoletes: gir-repository-devel
