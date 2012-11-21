@@ -255,7 +255,7 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 * Tue Jun  8 2010 Matthias Clasen <mclasen@redhat.com> - 0.6.14-1
 - Update to 0.6.14
 
-* Wed May 24 2010 Colin Walters <walters@verbum.org> - 0.6.12-1
+* Mon May 24 2010 Colin Walters <walters@verbum.org> - 0.6.12-1
 - Update to latest upstream release 0.6.12
 
 * Thu Mar 25 2010 Colin Walters <walters@verbum.org> - 0.6.9-3
@@ -283,7 +283,7 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 - Update to new git snapshot
 - Fix Version tag to comply with correct naming use with alphatag
 
-* Thu Jan 15 2010 Adam Miller <maxamillion@fedoraproject.org> - 0.6.7.20100115git-1
+* Fri Jan 15 2010 Adam Miller <maxamillion@fedoraproject.org> - 0.6.7.20100115git-1
 - Update to git snapshot for rawhide 
 
 * Tue Dec 22 2009 Matthias Clasen <mclasen@redhat.com> - 0.6.7-1
@@ -296,7 +296,7 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 * Fri Aug 28 2009 Colin Walters <walters@verbum.org> - 0.6.4-2
 - Add dep on libtool temporarily
 
-* Mon Aug 26 2009 Colin Walters <walters@verbum.org> - 0.6.4-1
+* Wed Aug 26 2009 Colin Walters <walters@verbum.org> - 0.6.4-1
 - New upstream 0.6.4
 - Drop upstreamed build fix patch 
 
