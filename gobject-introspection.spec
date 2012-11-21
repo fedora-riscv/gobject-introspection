@@ -51,8 +51,9 @@ Libraries and headers for gobject-introspection
 %setup -q
 
 %build
-(if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;
- %configure $CONFIGFLAGS)
+(if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;)
+%configure --enable-gtk-doc
+
 make V=1 %{?_smp_mflags}
 
 %install
