@@ -1,6 +1,6 @@
 Name:           gobject-introspection
 Version:        1.35.8
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
@@ -29,6 +29,8 @@ BuildRequires:  freetype-devel
 BuildRequires:  gnome-common
 BuildRequires:  intltool
 BuildRequires:  gtk-doc
+# For doctool
+BuildRequires:  python-mako
 
 %description
 GObject Introspection can scan C header and source files in order to
@@ -42,6 +44,8 @@ Group: Development/Libraries
 Requires: %name = %{version}-%{release}
 # Not always, but whatever, it's a tiny dep to pull in
 Requires: libtool
+# For g-ir-doctool
+Requires: python-mako
 Obsoletes: gir-repository-devel
 
 %description devel
@@ -51,8 +55,8 @@ Libraries and headers for gobject-introspection
 %setup -q
 
 %build
-(if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; CONFIGFLAGS=--enable-gtk-doc; fi;)
-%configure --enable-gtk-doc
+(if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; fi;)
+%configure --enable-gtk-doc --enable-doctool
 
 make V=1 %{?_smp_mflags}
 
@@ -90,6 +94,10 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Tue Mar 05 2013 Colin Walters <walters@verbum.org> - 1.35.8-2
+- Enable g-ir-doctool
+- Resolves: #903782
+
 * Tue Feb 19 2013 Richard Hughes <rhughes@redhat.com> - 1.35.8-1
 - Update to 1.35.8
 
