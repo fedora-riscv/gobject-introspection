@@ -1,13 +1,13 @@
 Name:           gobject-introspection
-Version:        1.37.4
-Release:        2%{?dist}
+Version:        1.37.6
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:           git:git://git.gnome.org/gobject-introspection
-Source0:        http://download.gnome.org/sources/gobject-introspection/1.36/%{name}-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/gobject-introspection/1.37/%{name}-%{version}.tar.xz
 
 Obsoletes:      gir-repository
 
@@ -94,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Thu Aug 22 2013 Kalev Lember <kalevlember@gmail.com> - 1.37.6-1
+- Update to 1.37.6
+
 * Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.37.4-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
