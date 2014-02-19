@@ -1,5 +1,5 @@
 Name:           gobject-introspection
-Version:        1.39.3
+Version:        1.39.90
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -94,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Wed Feb 19 2014 Richard Hughes <rhughes@redhat.com> - 1.39.90-1
+- Update to 1.39.90
+
 * Wed Jan 29 2014 Richard Hughes <rhughes@redhat.com> - 1.39.3-1
 - Update to 1.39.3
 
