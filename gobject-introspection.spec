@@ -1,5 +1,5 @@
 Name:           gobject-introspection
-Version:        1.39.90
+Version:        1.40.0
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -7,7 +7,7 @@ Group:      Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:           git:git://git.gnome.org/gobject-introspection
-Source0:        http://download.gnome.org/sources/gobject-introspection/1.39/%{name}-%{version}.tar.xz
+Source0:        http://download.gnome.org/sources/gobject-introspection/1.40/%{name}-%{version}.tar.xz
 
 Obsoletes:      gir-repository
 
@@ -94,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Tue Mar 25 2014 Richard Hughes <rhughes@redhat.com> - 1.40.0-1
+- Update to 1.40.0
+
 * Wed Feb 19 2014 Richard Hughes <rhughes@redhat.com> - 1.39.90-1
 - Update to 1.39.90
 
