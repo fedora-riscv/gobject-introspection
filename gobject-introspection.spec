@@ -1,6 +1,6 @@
 Name:           gobject-introspection
 Version:        1.40.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:      Development/Libraries
@@ -41,7 +41,7 @@ things.
 %package devel
 Summary: Libraries and headers for gobject-introspection
 Group: Development/Libraries
-Requires: %name = %{version}-%{release}
+Requires: %{name}%{?_isa} = %{version}-%{release}
 # Not always, but whatever, it's a tiny dep to pull in
 Requires: libtool
 # For g-ir-doctool
@@ -94,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Sat Apr 05 2014 Kalev Lember <kalevlember@gmail.com> - 1.40.0-2
+- Tighten -devel deps
+
 * Tue Mar 25 2014 Richard Hughes <rhughes@redhat.com> - 1.40.0-1
 - Update to 1.40.0
 
