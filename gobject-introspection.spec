@@ -72,7 +72,7 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %postun -p /sbin/ldconfig
 
 %files
-%doc COPYING
+%license COPYING
 
 %{_libdir}/lib*.so.*
 %dir %{_libdir}/girepository-1.0
@@ -96,6 +96,7 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %changelog
 * Tue Mar 03 2015 Kalev Lember <kalevlember@gmail.com> - 1.43.91-1
 - Update to 1.43.91
+- Use the %%license macro for the COPYING file
 
 * Thu Jan 22 2015 Richard Hughes <rhughes@redhat.com> - 1.43.3-1
 - Update to 1.43.3
