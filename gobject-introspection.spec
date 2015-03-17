@@ -3,7 +3,7 @@ Version:        1.43.92
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
-Group:      Development/Libraries
+Group:          Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:           git:git://git.gnome.org/gobject-introspection
