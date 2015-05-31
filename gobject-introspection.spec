@@ -1,3 +1,5 @@
+%global glib2_version 2.45.2
+
 Name:           gobject-introspection
 Version:        1.45.2
 Release:        1%{?dist}
@@ -11,7 +13,7 @@ Source0:        http://download.gnome.org/sources/gobject-introspection/1.45/%{n
 
 Obsoletes:      gir-repository
 
-BuildRequires:  glib2-devel
+BuildRequires:  glib2-devel >= %{glib2_version}
 BuildRequires:  python-devel >= 2.5
 BuildRequires:  gettext
 BuildRequires:  flex
@@ -31,6 +33,8 @@ BuildRequires:  intltool
 BuildRequires:  gtk-doc
 # For doctool
 BuildRequires:  python-mako
+
+Requires:       glib2%{?_isa} >= %{glib2_version}
 
 %description
 GObject Introspection can scan C header and source files in order to
@@ -96,6 +100,7 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %changelog
 * Sun May 31 2015 Kalev Lember <kalevlember@gmail.com> - 1.45.2-1
 - Update to 1.45.2
+- Set minimum required glib2 version
 
 * Tue Mar 24 2015 Kalev Lember <kalevlember@gmail.com> - 1.44.0-1
 - Update to 1.44.0
