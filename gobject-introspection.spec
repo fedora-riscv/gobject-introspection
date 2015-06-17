@@ -2,7 +2,7 @@
 
 Name:           gobject-introspection
 Version:        1.45.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:          Development/Libraries
@@ -98,6 +98,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.45.2-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
+
 * Sun May 31 2015 Kalev Lember <kalevlember@gmail.com> - 1.45.2-1
 - Update to 1.45.2
 - Set minimum required glib2 version
