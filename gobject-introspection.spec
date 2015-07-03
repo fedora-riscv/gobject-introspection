@@ -62,7 +62,7 @@ Libraries and headers for gobject-introspection
 (if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; fi;)
 %configure --enable-gtk-doc --enable-doctool
 
-make V=1 %{?_smp_mflags}
+make V=1
 
 %install
 make install DESTDIR=$RPM_BUILD_ROOT
