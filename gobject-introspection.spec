@@ -65,7 +65,7 @@ Libraries and headers for gobject-introspection
 make %{?_smp_mflags} V=1
 
 %install
-make install DESTDIR=$RPM_BUILD_ROOT
+%make_install
 
 # Die libtool, die.
 find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
@@ -100,6 +100,7 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %changelog
 * Fri Aug 21 2015 Kalev Lember <klember@redhat.com> - 1.45.4-1
 - Update to 1.45.4
+- Use make_install macro
 
 * Fri Jul 03 2015 Florian Müllner <fmuellner@redhat.com> - 1.45.3-1
 - Update to 1.45.3
