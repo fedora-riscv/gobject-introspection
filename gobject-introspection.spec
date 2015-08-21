@@ -1,7 +1,7 @@
-%global glib2_version 2.45.2
+%global glib2_version 2.45.3
 
 Name:           gobject-introspection
-Version:        1.45.3
+Version:        1.45.4
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -62,7 +62,7 @@ Libraries and headers for gobject-introspection
 (if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; fi;)
 %configure --enable-gtk-doc --enable-doctool
 
-make V=1
+make %{?_smp_mflags} V=1
 
 %install
 make install DESTDIR=$RPM_BUILD_ROOT
@@ -98,6 +98,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Fri Aug 21 2015 Kalev Lember <klember@redhat.com> - 1.45.4-1
+- Update to 1.45.4
+
 * Fri Jul 03 2015 Florian Müllner <fmuellner@redhat.com> - 1.45.3-1
 - Update to 1.45.3
 
