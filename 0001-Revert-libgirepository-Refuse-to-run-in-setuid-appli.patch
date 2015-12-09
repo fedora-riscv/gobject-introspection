@@ -1,0 +1,67 @@
+From 13f7ca3a3e3f823690add83dd8bfada52da559d2 Mon Sep 17 00:00:00 2001
+From: Colin Walters <walters@verbum.org>
+Date: Wed, 9 Dec 2015 16:17:48 -0500
+Subject: [PATCH] Revert "libgirepository: Refuse to run in setuid
+ applications"
+
+This reverts commit 98bb6c91b710a95efe4cfeb303daeec3381b9c98.
+
+It breaks programs simply executed *transitively* from a setuid
+binary like the dbus daemon launch helper.
+
+https://bugzilla.redhat.com/show_bug.cgi?id=1285991
+
+Conflicts:
+	girepository/girepository.c
+---
+ configure.ac                |  2 +-
+ girepository/girepository.c | 13 -------------
+ 2 files changed, 1 insertion(+), 14 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b74d182..a6a272d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -247,7 +247,7 @@ AC_C_CONST
+ 
+ # Checks for library functions.
+ AC_FUNC_STRTOD
+-AC_CHECK_FUNCS([memchr strchr strspn strstr strtol strtoull getauxval])
++AC_CHECK_FUNCS([memchr strchr strspn strstr strtol strtoull])
+ AC_CHECK_FUNCS([backtrace backtrace_symbols])
+ 
+ # Python
+diff --git a/girepository/girepository.c b/girepository/girepository.c
+index 82ee8a4..4537c03 100644
+--- a/girepository/girepository.c
++++ b/girepository/girepository.c
+@@ -27,11 +27,6 @@
+ #include <string.h>
+ #include <stdlib.h>
+ 
+-#ifdef HAVE_GETAUXVAL
+-#include <unistd.h>
+-#include <sys/auxv.h>
+-#endif
+-
+ #include <glib.h>
+ #include <glib/gprintf.h>
+ #include <gmodule.h>
+@@ -152,14 +147,6 @@ init_globals (void)
+   if (!g_once_init_enter (&initialized))
+     return;
+ 
+-#ifdef HAVE_GETAUXVAL
+-  if (getauxval (AT_SECURE))
+-    {
+-      g_printerr ("error: libgirepository.so (gobject-introspection) is not audited for use in setuid applications\nSee https://bugzilla.gnome.org/show_bug.cgi?id=755472\n");
+-      _exit (1);
+-    }
+-#endif
+-
+   if (default_repository == NULL)
+     default_repository = g_object_new (G_TYPE_IREPOSITORY, NULL);
+ 
+-- 
+1.8.3.1
+
