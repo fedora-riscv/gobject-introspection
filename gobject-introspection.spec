@@ -67,6 +67,9 @@ Libraries and headers for gobject-introspection
 %autosetup -Sgit
 
 %build
+# I'm getting autotools breakage due to
+# timestamps; let's just always do "real" builds.
+rm -f configure
 (if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; fi;)
 %configure --enable-gtk-doc --enable-doctool
 
@@ -109,6 +112,7 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 * Wed Dec 09 2015 Colin Walters <walters@redhat.com> - 1.47.1-2
 - Backport revert of upstream patch around setuid apps
   Resolves: #1285991
+- Forcibly reautoconf to bypass timestamp issues
 
 * Mon Nov 02 2015 Kalev Lember <klember@redhat.com> - 1.47.1-1
 - Update to 1.47.1
