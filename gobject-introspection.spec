@@ -15,6 +15,11 @@ Patch0: 0001-Revert-libgirepository-Refuse-to-run-in-setuid-appli.patch
 
 Obsoletes:      gir-repository
 
+# Support builds from git
+BuildRequires: autoconf automake libtool
+# For docs
+BuildRequires: gtk-doc
+
 BuildRequires:  glib2-devel >= %{glib2_version}
 BuildRequires:  python-devel >= 2.5
 BuildRequires:  gettext
