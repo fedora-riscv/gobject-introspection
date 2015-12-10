@@ -69,6 +69,16 @@ Libraries and headers for gobject-introspection
 %build
 # I'm getting autotools breakage due to
 # timestamps; let's just always do "real" builds.
+# DELETEME: https://git.gnome.org/browse/gobject-introspection/commit/?id=f7b2e1c5e948bfabb7c51eb73d42689bced6cb79
+if ! test -f autogen.sh; then
+    cat >autogen.sh <<EOF
+#!/bin/bash
+set -xeuo pipefail
+gtkdocize --flavour no-tmpl
+autoreconf --force --install --verbose
+EOF
+fi
+chmod a+x autogen.sh
 rm -f configure
 (if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; fi;)
 %configure --enable-gtk-doc --enable-doctool
