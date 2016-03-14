@@ -62,6 +62,7 @@ Obsoletes: gir-repository-devel
 Libraries and headers for gobject-introspection
 
 %prep
+%autosetup -Sgit
 
 %build
 # I'm getting autotools breakage due to
