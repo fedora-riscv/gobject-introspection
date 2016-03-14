@@ -1,8 +1,8 @@
 %global glib2_version 2.45.3
 
 Name:           gobject-introspection
-Version:        1.47.1
-Release:        3%{?dist}
+Version:        1.47.92
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:          Development/Libraries
@@ -10,8 +10,6 @@ License:        GPLv2+, LGPLv2+, MIT
 URL:            http://live.gnome.org/GObjectIntrospection
 #VCS:           git:git://git.gnome.org/gobject-introspection
 Source0:        http://download.gnome.org/sources/gobject-introspection/1.47/%{name}-%{version}.tar.xz
-# Upstream as https://git.gnome.org/browse/gobject-introspection/commit/?id=13f7ca3a3e3f823690add83dd8bfada52da559d2
-Patch0: 0001-Revert-libgirepository-Refuse-to-run-in-setuid-appli.patch
 
 Obsoletes:      gir-repository
 
@@ -119,6 +117,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Mon Mar 14 2016 Richard Hughes <rhughes@redhat.com> - 1.47.92-1
+- Update to 1.47.92
+
 * Wed Feb 03 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1.47.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
