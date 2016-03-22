@@ -1,4 +1,4 @@
-%global glib2_version 2.45.3
+%global glib2_version 2.48.0
 
 Name:           gobject-introspection
 Version:        1.48.0
