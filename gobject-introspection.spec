@@ -7,9 +7,8 @@ Summary:        Introspection system for GObject-based libraries
 
 Group:          Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
-URL:            http://live.gnome.org/GObjectIntrospection
-#VCS:           git:git://git.gnome.org/gobject-introspection
-Source0:        http://download.gnome.org/sources/gobject-introspection/1.49/%{name}-%{version}.tar.xz
+URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
+Source0:        https://download.gnome.org/sources/gobject-introspection/1.49/%{name}-%{version}.tar.xz
 
 Obsoletes:      gir-repository
 
@@ -119,6 +118,7 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %changelog
 * Thu Aug 04 2016 Kalev Lember <klember@redhat.com> - 1.49.1-1
 - Update to 1.49.1
+- Update source URLs
 
 * Tue Mar 22 2016 Kalev Lember <klember@redhat.com> - 1.48.0-1
 - Update to 1.48.0
