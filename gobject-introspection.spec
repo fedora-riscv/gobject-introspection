@@ -5,7 +5,6 @@ Version:        1.49.1
 Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
-Group:          Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 Source0:        https://download.gnome.org/sources/gobject-introspection/1.49/%{name}-%{version}.tar.xz
@@ -47,7 +46,6 @@ things.
 
 %package devel
 Summary: Libraries and headers for gobject-introspection
-Group: Development/Libraries
 Requires: %{name}%{?_isa} = %{version}-%{release}
 # Not always, but whatever, it's a tiny dep to pull in
 Requires: libtool
@@ -115,6 +113,7 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %changelog
 * Fri Sep 02 2016 Kalev Lember <klember@redhat.com> - 1.49.1-2
 - Drop old gir-repository obsoletes
+- Don't set group tags
 
 * Thu Aug 04 2016 Kalev Lember <klember@redhat.com> - 1.49.1-1
 - Update to 1.49.1
