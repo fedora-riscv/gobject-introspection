@@ -2,15 +2,13 @@
 
 Name:           gobject-introspection
 Version:        1.49.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 Group:          Development/Libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 Source0:        https://download.gnome.org/sources/gobject-introspection/1.49/%{name}-%{version}.tar.xz
-
-Obsoletes:      gir-repository
 
 # Support builds from git
 BuildRequires: autoconf automake libtool
@@ -55,7 +53,6 @@ Requires: %{name}%{?_isa} = %{version}-%{release}
 Requires: libtool
 # For g-ir-doctool
 Requires: python-mako
-Obsoletes: gir-repository-devel
 
 %description devel
 Libraries and headers for gobject-introspection
@@ -116,6 +113,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Fri Sep 02 2016 Kalev Lember <klember@redhat.com> - 1.49.1-2
+- Drop old gir-repository obsoletes
+
 * Thu Aug 04 2016 Kalev Lember <klember@redhat.com> - 1.49.1-1
 - Update to 1.49.1
 - Update source URLs
