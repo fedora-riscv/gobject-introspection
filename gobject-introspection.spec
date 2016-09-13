@@ -1,8 +1,8 @@
-%global glib2_version 2.49.4
+%global glib2_version 2.49.7
 
 Name:           gobject-introspection
-Version:        1.49.1
-Release:        2%{?dist}
+Version:        1.49.2
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
@@ -111,6 +111,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Tue Sep 13 2016 Florian Müllner <fmuellner@redhat.com> - 1.49.2-1
+- Update to 1.49.2
+
 * Fri Sep 02 2016 Kalev Lember <klember@redhat.com> - 1.49.1-2
 - Drop old gir-repository obsoletes
 - Don't set group tags
