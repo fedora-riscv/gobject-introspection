@@ -1,13 +1,13 @@
-%global glib2_version 2.49.7
+%global glib2_version 2.50.0
 
 Name:           gobject-introspection
-Version:        1.49.2
+Version:        1.50.0
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
-Source0:        https://download.gnome.org/sources/gobject-introspection/1.49/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gobject-introspection/1.50/%{name}-%{version}.tar.xz
 
 # Support builds from git
 BuildRequires: autoconf automake libtool
@@ -111,6 +111,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Tue Sep 20 2016 Florian Müllner <fmuellner@redhat.com> - 1.50.0-1
+- Update to 1.50.0
+
 * Tue Sep 13 2016 Florian Müllner <fmuellner@redhat.com> - 1.49.2-1
 - Update to 1.49.2
 
