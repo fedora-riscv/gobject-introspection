@@ -9,11 +9,6 @@ License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 Source0:        https://download.gnome.org/sources/gobject-introspection/1.50/%{name}-%{version}.tar.xz
 
-# Support builds from git
-BuildRequires: autoconf automake libtool
-# For docs
-BuildRequires: gtk-doc
-
 BuildRequires:  glib2-devel >= %{glib2_version}
 BuildRequires:  python-devel >= 2.5
 BuildRequires:  gettext
@@ -29,9 +24,6 @@ BuildRequires:  libX11-devel
 BuildRequires:  fontconfig-devel
 BuildRequires:  libXft-devel
 BuildRequires:  freetype-devel
-# Bootstrap requirements
-BuildRequires:  gnome-common
-BuildRequires:  intltool
 BuildRequires:  gtk-doc
 # For doctool
 BuildRequires:  python-mako
@@ -59,20 +51,6 @@ Libraries and headers for gobject-introspection
 %autosetup -Sgit
 
 %build
-# I'm getting autotools breakage due to
-# timestamps; let's just always do "real" builds.
-# DELETEME: https://git.gnome.org/browse/gobject-introspection/commit/?id=f7b2e1c5e948bfabb7c51eb73d42689bced6cb79
-if ! test -f autogen.sh; then
-    cat >autogen.sh <<EOF
-#!/bin/bash
-set -xeuo pipefail
-gtkdocize --flavour no-tmpl
-autoreconf --force --install --verbose
-EOF
-fi
-chmod a+x autogen.sh
-rm -f configure
-(if ! test -x configure; then NOCONFIGURE=1 ./autogen.sh; fi;)
 %configure --enable-gtk-doc --enable-doctool
 
 make %{?_smp_mflags} V=1
