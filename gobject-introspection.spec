@@ -2,7 +2,7 @@
 
 Name:           gobject-introspection
 Version:        1.51.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
@@ -89,6 +89,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Fri Feb 10 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1.51.1-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
 * Tue Nov 01 2016 Kalev Lember <klember@redhat.com> - 1.51.1-1
 - Update to 1.51.1
 
