@@ -14,6 +14,7 @@ BuildRequires:  python-devel >= 2.5
 BuildRequires:  gettext
 BuildRequires:  flex
 BuildRequires:  bison
+BuildRequires:  chrpath
 BuildRequires:  git
 BuildRequires:  libffi-devel
 BuildRequires:  mesa-libGL-devel
@@ -58,6 +59,11 @@ make %{?_smp_mflags} V=1
 %install
 %make_install
 
+# Remove lib64 rpaths
+chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-compiler
+chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-generate
+chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-inspect
+
 # Die libtool, die.
 find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
 find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
@@ -91,6 +97,7 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %changelog
 * Fri Mar 17 2017 Kalev Lember <klember@redhat.com> - 1.51.5-1
 - Update to 1.51.5
+- Remove lib64 rpaths
 
 * Tue Feb 14 2017 Richard Hughes <rhughes@redhat.com> - 1.51.3-1
 - Update to 1.51.3
