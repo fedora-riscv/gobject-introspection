@@ -2,7 +2,7 @@
 
 Name:           gobject-introspection
 Version:        1.53.4
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
@@ -98,6 +98,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Sun Jul 30 2017 Florian Weimer <fweimer@redhat.com> - 1.53.4-4
+- Rebuild with binutils fix for ppc64le (#1475636)
+
 * Wed Jul 26 2017 Florian Müllner <fmuellner@redhat.com> - 1.53.4-3
 - Revert a GKeyFile introspection ABI change
 
