@@ -2,7 +2,7 @@
 
 Name:           gobject-introspection
 Version:        1.53.4
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
@@ -98,6 +98,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Wed Aug 02 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1.53.4-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
+
 * Sun Jul 30 2017 Florian Weimer <fweimer@redhat.com> - 1.53.4-4
 - Rebuild with binutils fix for ppc64le (#1475636)
 
