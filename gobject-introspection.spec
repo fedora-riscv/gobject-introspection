@@ -1,16 +1,13 @@
-%global glib2_version 2.53.4
+%global glib2_version 2.53.5
 
 Name:           gobject-introspection
-Version:        1.53.4
-Release:        5%{?dist}
+Version:        1.53.5
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 Source0:        https://download.gnome.org/sources/gobject-introspection/1.53/%{name}-%{version}.tar.xz
-
-# Backported from upstream
-Patch0:         0001-gir-Update-glib-annotations.patch
 
 BuildRequires:  glib2-devel >= %{glib2_version}
 BuildRequires:  python-devel >= 2.5
@@ -18,7 +15,6 @@ BuildRequires:  gettext
 BuildRequires:  flex
 BuildRequires:  bison
 BuildRequires:  chrpath
-BuildRequires:  git
 BuildRequires:  libffi-devel
 BuildRequires:  mesa-libGL-devel
 BuildRequires:  cairo-gobject-devel
@@ -52,7 +48,7 @@ Requires: python-mako
 Libraries and headers for gobject-introspection
 
 %prep
-%autosetup -Sgit
+%autosetup -p1
 
 %build
 %configure --enable-gtk-doc --enable-doctool
@@ -98,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Tue Aug 15 2017 Kalev Lember <klember@redhat.com> - 1.53.5-1
+- Update to 1.53.5
+
 * Wed Aug 02 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1.53.4-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
