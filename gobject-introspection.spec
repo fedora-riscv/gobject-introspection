@@ -1,13 +1,13 @@
-%global glib2_version 2.53.7
+%global glib2_version 2.54.0
 
 Name:           gobject-introspection
-Version:        1.53.7
+Version:        1.54.0
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
-Source0:        https://download.gnome.org/sources/gobject-introspection/1.53/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gobject-introspection/1.54/%{name}-%{version}.tar.xz
 
 BuildRequires:  glib2-devel >= %{glib2_version}
 BuildRequires:  python-devel >= 2.5
@@ -94,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Mon Sep 11 2017 Kalev Lember <klember@redhat.com> - 1.54.0-1
+- Update to 1.54.0
+
 * Tue Sep 05 2017 Kalev Lember <klember@redhat.com> - 1.53.7-1
 - Update to 1.53.7
 
