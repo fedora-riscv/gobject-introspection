@@ -1,7 +1,7 @@
 %global glib2_version 2.54.0
 
 Name:           gobject-introspection
-Version:        1.54.0
+Version:        1.54.1
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -94,6 +94,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Fri Oct 06 2017 Kalev Lember <klember@redhat.com> - 1.54.1-1
+- Update to 1.54.1
+
 * Mon Sep 11 2017 Kalev Lember <klember@redhat.com> - 1.54.0-1
 - Update to 1.54.0
 
