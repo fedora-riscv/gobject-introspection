@@ -2,7 +2,7 @@
 
 Name:           gobject-introspection
 Version:        1.54.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
@@ -10,7 +10,7 @@ URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 Source0:        https://download.gnome.org/sources/gobject-introspection/1.54/%{name}-%{version}.tar.xz
 
 BuildRequires:  glib2-devel >= %{glib2_version}
-BuildRequires:  python-devel >= 2.5
+BuildRequires:  python2-devel >= 2.5
 BuildRequires:  gettext
 BuildRequires:  flex
 BuildRequires:  bison
@@ -26,7 +26,7 @@ BuildRequires:  libXft-devel
 BuildRequires:  freetype-devel
 BuildRequires:  gtk-doc
 # For doctool
-BuildRequires:  python-mako
+BuildRequires:  python2-mako
 
 Requires:       glib2%{?_isa} >= %{glib2_version}
 
@@ -42,7 +42,7 @@ Requires: %{name}%{?_isa} = %{version}-%{release}
 # Not always, but whatever, it's a tiny dep to pull in
 Requires: libtool
 # For g-ir-doctool
-Requires: python-mako
+Requires: python2-mako
 
 %description devel
 Libraries and headers for gobject-introspection
@@ -94,6 +94,10 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Fri Jan 05 2018 Iryna Shcherbina <ishcherb@redhat.com> - 1.54.1-2
+- Update Python 2 dependency declarations to new packaging standards
+  (See https://fedoraproject.org/wiki/FinalizingFedoraSwitchtoPython3)
+
 * Fri Oct 06 2017 Kalev Lember <klember@redhat.com> - 1.54.1-1
 - Update to 1.54.1
 
