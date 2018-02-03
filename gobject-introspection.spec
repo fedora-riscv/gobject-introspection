@@ -4,7 +4,7 @@
 
 Name:           gobject-introspection
 Version:        1.54.1
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
