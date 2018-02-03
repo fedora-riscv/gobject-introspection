@@ -1,5 +1,7 @@
 %global glib2_version 2.54.0
 
+%global __python %{__python3}
+
 Name:           gobject-introspection
 Version:        1.54.1
 Release:        4%{?dist}
@@ -8,9 +10,10 @@ Summary:        Introspection system for GObject-based libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 Source0:        https://download.gnome.org/sources/gobject-introspection/1.54/%{name}-%{version}.tar.xz
+Patch0:         0001-tools-use-real-PYTHON-instead-of-usr-bin-env.patch
 
 BuildRequires:  glib2-devel >= %{glib2_version}
-BuildRequires:  python2-devel >= 2.5
+BuildRequires:  python3-devel
 BuildRequires:  gettext
 BuildRequires:  flex
 BuildRequires:  bison
@@ -25,8 +28,6 @@ BuildRequires:  fontconfig-devel
 BuildRequires:  libXft-devel
 BuildRequires:  freetype-devel
 BuildRequires:  gtk-doc
-# For doctool
-BuildRequires:  python2-mako
 
 Requires:       glib2%{?_isa} >= %{glib2_version}
 
@@ -37,12 +38,13 @@ typelib files, useful for creating language bindings among other
 things.
 
 %package devel
-Summary: Libraries and headers for gobject-introspection
-Requires: %{name}%{?_isa} = %{version}-%{release}
+Summary:        Libraries and headers for gobject-introspection
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 # Not always, but whatever, it's a tiny dep to pull in
-Requires: libtool
+Requires:       libtool
 # For g-ir-doctool
-Requires: python2-mako
+BuildRequires:  python3-mako
+Requires:       python3-mako
 
 %description devel
 Libraries and headers for gobject-introspection
@@ -51,9 +53,8 @@ Libraries and headers for gobject-introspection
 %autosetup -p1
 
 %build
-%configure --enable-gtk-doc --enable-doctool --with-python=python2
-
-make %{?_smp_mflags} V=1
+%configure --enable-gtk-doc --enable-doctool --with-python=%{__python3}
+%make_build
 
 %install
 %make_install
@@ -64,8 +65,8 @@ chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-generate
 chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-inspect
 
 # Die libtool, die.
-find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
-find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
+find $RPM_BUILD_ROOT -type f -name "*.la" -print -delete
+find $RPM_BUILD_ROOT -type f -name "*.a" -print -delete
 
 %ldconfig_scriptlets
 
@@ -78,20 +79,21 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 
 %files devel
 %{_libdir}/lib*.so
-%dir %{_libdir}/gobject-introspection
-%{_libdir}/gobject-introspection/*
+%{_libdir}/gobject-introspection/
 %{_libdir}/pkgconfig/*
 %{_includedir}/*
 %{_bindir}/g-ir-*
 %{_datadir}/gir-1.0
-%dir %{_datadir}/gobject-introspection-1.0
-%{_datadir}/gobject-introspection-1.0/*
+%{_datadir}/gobject-introspection-1.0/
 %{_datadir}/aclocal/introspection.m4
 %{_mandir}/man1/*.gz
-%dir %{_datadir}/gtk-doc/html/gi
-%{_datadir}/gtk-doc/html/gi/*
+%{_datadir}/gtk-doc/html/gi/
 
 %changelog
+* Sat Feb 03 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 1.54.1-5
+- Switch to python3
+- Cleanup spec
+
 * Sat Feb 03 2018 Richard Shaw <hobbes1069@gmail.com> - 1.54.1-4
 - Add python2 to configure so shebangs are properly updated by
   brp-mangle-shebangs.
