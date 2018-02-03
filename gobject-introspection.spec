@@ -2,7 +2,7 @@
 
 Name:           gobject-introspection
 Version:        1.54.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
@@ -51,7 +51,7 @@ Libraries and headers for gobject-introspection
 %autosetup -p1
 
 %build
-%configure --enable-gtk-doc --enable-doctool
+%configure --enable-gtk-doc --enable-doctool --with-python=python2
 
 make %{?_smp_mflags} V=1
 
@@ -92,6 +92,10 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Sat Feb 03 2018 Richard Shaw <hobbes1069@gmail.com> - 1.54.1-4
+- Add python2 to configure so shebangs are properly updated by
+  brp-mangle-shebangs.
+
 * Sat Feb 03 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 1.54.1-3
 - Switch to %%ldconfig_scriptlets
 
