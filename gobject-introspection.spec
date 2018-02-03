@@ -2,7 +2,7 @@
 
 Name:           gobject-introspection
 Version:        1.54.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
@@ -67,9 +67,7 @@ chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-inspect
 find $RPM_BUILD_ROOT -type f -name "*.la" -exec rm -f {} ';'
 find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
 %license COPYING
@@ -94,6 +92,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -exec rm -f {} ';'
 %{_datadir}/gtk-doc/html/gi/*
 
 %changelog
+* Sat Feb 03 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 1.54.1-3
+- Switch to %%ldconfig_scriptlets
+
 * Fri Jan 05 2018 Iryna Shcherbina <ishcherb@redhat.com> - 1.54.1-2
 - Update Python 2 dependency declarations to new packaging standards
   (See https://fedoraproject.org/wiki/FinalizingFedoraSwitchtoPython3)
