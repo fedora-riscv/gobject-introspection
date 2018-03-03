@@ -10,7 +10,6 @@ Summary:        Introspection system for GObject-based libraries
 License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 Source0:        https://download.gnome.org/sources/gobject-introspection/1.55/%{name}-%{version}.tar.xz
-Patch0:         0001-tools-use-real-PYTHON-instead-of-usr-bin-env.patch
 
 BuildRequires:  glib2-devel >= %{glib2_version}
 BuildRequires:  python3-devel
@@ -92,6 +91,7 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -print -delete
 %changelog
 * Sat Mar 03 2018 Kalev Lember <klember@redhat.com> - 1.55.2-1
 - Update to 1.55.2
+- Drop /usr/bin/env shebang patch as the brp scripts now handle this correctly
 
 * Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.54.1-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
