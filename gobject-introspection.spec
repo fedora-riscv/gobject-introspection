@@ -67,8 +67,6 @@ chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-inspect
 find $RPM_BUILD_ROOT -type f -name "*.la" -print -delete
 find $RPM_BUILD_ROOT -type f -name "*.a" -print -delete
 
-%ldconfig_scriptlets
-
 %files
 %license COPYING
 
@@ -92,6 +90,7 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -print -delete
 * Sat Mar 03 2018 Kalev Lember <klember@redhat.com> - 1.55.2-1
 - Update to 1.55.2
 - Drop /usr/bin/env shebang patch as the brp scripts now handle this correctly
+- Remove ldconfig scriptlets
 
 * Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.54.1-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
