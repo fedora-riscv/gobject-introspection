@@ -11,22 +11,23 @@ License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 Source0:        https://download.gnome.org/sources/gobject-introspection/1.55/%{name}-%{version}.tar.xz
 
-BuildRequires:  glib2-devel >= %{glib2_version}
-BuildRequires:  python3-devel
-BuildRequires:  gettext
-BuildRequires:  flex
 BuildRequires:  bison
-BuildRequires:  chrpath
-BuildRequires:  libffi-devel
-BuildRequires:  mesa-libGL-devel
 BuildRequires:  cairo-gobject-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  libXfixes-devel
-BuildRequires:  libX11-devel
+BuildRequires:  chrpath
+BuildRequires:  flex
 BuildRequires:  fontconfig-devel
-BuildRequires:  libXft-devel
 BuildRequires:  freetype-devel
+BuildRequires:  gettext
+BuildRequires:  glib2-devel >= %{glib2_version}
 BuildRequires:  gtk-doc
+BuildRequires:  libffi-devel
+BuildRequires:  libX11-devel
+BuildRequires:  libXfixes-devel
+BuildRequires:  libXft-devel
+BuildRequires:  libxml2-devel
+BuildRequires:  mesa-libGL-devel
+BuildRequires:  python3-devel
+BuildRequires:  python3-mako
 
 Requires:       glib2%{?_isa} >= %{glib2_version}
 
@@ -42,7 +43,6 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 # Not always, but whatever, it's a tiny dep to pull in
 Requires:       libtool
 # For g-ir-doctool
-BuildRequires:  python3-mako
 Requires:       python3-mako
 
 %description devel
