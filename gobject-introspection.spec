@@ -1,15 +1,15 @@
-%global glib2_version 2.55.2
+%global glib2_version 2.56.0
 
 %global __python %{__python3}
 
 Name:           gobject-introspection
-Version:        1.55.2
+Version:        1.56.0
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
-Source0:        https://download.gnome.org/sources/gobject-introspection/1.55/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gobject-introspection/1.56/%{name}-%{version}.tar.xz
 
 BuildRequires:  bison
 BuildRequires:  cairo-gobject-devel
@@ -87,6 +87,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -print -delete
 %{_datadir}/gtk-doc/html/gi/
 
 %changelog
+* Tue Mar 13 2018 Kalev Lember <klember@redhat.com> - 1.56.0-1
+- Update to 1.56.0
+
 * Sat Mar 03 2018 Kalev Lember <klember@redhat.com> - 1.55.2-1
 - Update to 1.55.2
 - Drop /usr/bin/env shebang patch as the brp scripts now handle this correctly
