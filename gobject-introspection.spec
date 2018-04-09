@@ -1,9 +1,9 @@
-%global glib2_version 2.56.0
+%global glib2_version 2.56.1
 
 %global __python %{__python3}
 
 Name:           gobject-introspection
-Version:        1.56.0
+Version:        1.56.1
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -87,6 +87,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -print -delete
 %{_datadir}/gtk-doc/html/gi/
 
 %changelog
+* Mon Apr 09 2018 Kalev Lember <klember@redhat.com> - 1.56.1-1
+- Update to 1.56.1
+
 * Tue Mar 13 2018 Kalev Lember <klember@redhat.com> - 1.56.0-1
 - Update to 1.56.0
 
