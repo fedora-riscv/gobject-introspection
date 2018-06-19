@@ -4,7 +4,7 @@
 
 Name:           gobject-introspection
 Version:        1.56.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
@@ -87,6 +87,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -print -delete
 %{_datadir}/gtk-doc/html/gi/
 
 %changelog
+* Tue Jun 19 2018 Miro Hrončok <mhroncok@redhat.com> - 1.56.1-2
+- Rebuilt for Python 3.7
+
 * Mon Apr 09 2018 Kalev Lember <klember@redhat.com> - 1.56.1-1
 - Update to 1.56.1
 
