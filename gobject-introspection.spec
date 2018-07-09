@@ -11,6 +11,7 @@ License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 Source0:        https://download.gnome.org/sources/gobject-introspection/1.56/%{name}-%{version}.tar.xz
 
+BuildRequires:  gcc
 BuildRequires:  bison
 BuildRequires:  cairo-gobject-devel
 BuildRequires:  chrpath
