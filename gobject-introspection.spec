@@ -1,15 +1,15 @@
-%global glib2_version 2.56.1
+%global glib2_version 2.57.2
 
 %global __python %{__python3}
 
 Name:           gobject-introspection
-Version:        1.56.1
-Release:        3%{?dist}
+Version:        1.57.2
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
-Source0:        https://download.gnome.org/sources/gobject-introspection/1.56/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gobject-introspection/1.57/%{name}-%{version}.tar.xz
 
 BuildRequires:  gcc
 BuildRequires:  bison
@@ -88,6 +88,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -print -delete
 %{_datadir}/gtk-doc/html/gi/
 
 %changelog
+* Sun Aug 12 2018 Kalev Lember <klember@redhat.com> - 1.57.2-1
+- Update to 1.57.2
+
 * Fri Jul 13 2018 Fedora Release Engineering <releng@fedoraproject.org> - 1.56.1-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
