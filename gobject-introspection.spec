@@ -1,15 +1,15 @@
-%global glib2_version 2.57.2
+%global glib2_version 2.58.0
 
 %global __python %{__python3}
 
 Name:           gobject-introspection
-Version:        1.57.2
+Version:        1.58.0
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
-Source0:        https://download.gnome.org/sources/gobject-introspection/1.57/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gobject-introspection/1.58/%{name}-%{version}.tar.xz
 
 BuildRequires:  gcc
 BuildRequires:  bison
@@ -29,6 +29,7 @@ BuildRequires:  libxml2-devel
 BuildRequires:  mesa-libGL-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-mako
+BuildRequires:  python3-markdown
 
 Requires:       glib2%{?_isa} >= %{glib2_version}
 
@@ -88,6 +89,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -print -delete
 %{_datadir}/gtk-doc/html/gi/
 
 %changelog
+* Thu Sep 06 2018 Kalev Lember <klember@redhat.com> - 1.58.0-1
+- Update to 1.58.0
+
 * Sun Aug 12 2018 Kalev Lember <klember@redhat.com> - 1.57.2-1
 - Update to 1.57.2
 
