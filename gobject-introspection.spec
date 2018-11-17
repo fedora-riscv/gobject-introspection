@@ -3,8 +3,8 @@
 %global __python %{__python3}
 
 Name:           gobject-introspection
-Version:        1.58.0
-Release:        2%{?dist}
+Version:        1.58.1
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
@@ -89,6 +89,9 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -print -delete
 %{_datadir}/gtk-doc/html/gi/
 
 %changelog
+* Sat Nov 17 2018 Kalev Lember <klember@redhat.com> - 1.58.1-1
+- Update to 1.58.1
+
 * Fri Sep 07 2018 Kalev Lember <klember@redhat.com> - 1.58.0-2
 - Rebuilt against fixed atk (#1626575)
 
