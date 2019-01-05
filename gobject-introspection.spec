@@ -76,12 +76,15 @@ Libraries and headers for gobject-introspection
 %{_datadir}/gobject-introspection-1.0/
 %{_datadir}/aclocal/introspection.m4
 %{_mandir}/man1/*.gz
+%dir %{_datadir}/gtk-doc
+%dir %{_datadir}/gtk-doc/html
 %{_datadir}/gtk-doc/html/gi/
 
 %changelog
 * Sat Jan 05 2019 Kalev Lember <klember@redhat.com> - 1.59.2-1
 - Update to 1.59.2
 - Switch to the meson build system
+- Fix gtk-doc directory ownership
 
 * Sun Dec 30 2018 Kalev Lember <klember@redhat.com> - 1.58.3-1
 - Update to 1.58.3
