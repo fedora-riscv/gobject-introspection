@@ -14,7 +14,6 @@ Source0:        https://download.gnome.org/sources/gobject-introspection/1.59/%{
 BuildRequires:  gcc
 BuildRequires:  bison
 BuildRequires:  cairo-gobject-devel
-BuildRequires:  chrpath
 BuildRequires:  flex
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype-devel
@@ -27,6 +26,7 @@ BuildRequires:  libXfixes-devel
 BuildRequires:  libXft-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  mesa-libGL-devel
+BuildRequires:  meson
 BuildRequires:  python3-devel
 BuildRequires:  python3-mako
 BuildRequires:  python3-markdown
@@ -54,24 +54,14 @@ Libraries and headers for gobject-introspection
 %autosetup -p1
 
 %build
-%configure --enable-gtk-doc --enable-doctool --with-python=%{__python3}
-%make_build
+%meson -Ddoctool=true -Dgtk-doc=true -Dpython=%{__python3}
+%meson_build
 
 %install
-%make_install
-
-# Remove lib64 rpaths
-chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-compiler
-chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-generate
-chrpath --delete $RPM_BUILD_ROOT%{_bindir}/g-ir-inspect
-
-# Die libtool, die.
-find $RPM_BUILD_ROOT -type f -name "*.la" -print -delete
-find $RPM_BUILD_ROOT -type f -name "*.a" -print -delete
+%meson_install
 
 %files
 %license COPYING
-
 %{_libdir}/lib*.so.*
 %dir %{_libdir}/girepository-1.0
 %{_libdir}/girepository-1.0/*.typelib
@@ -91,6 +81,7 @@ find $RPM_BUILD_ROOT -type f -name "*.a" -print -delete
 %changelog
 * Sat Jan 05 2019 Kalev Lember <klember@redhat.com> - 1.59.2-1
 - Update to 1.59.2
+- Switch to the meson build system
 
 * Sun Dec 30 2018 Kalev Lember <klember@redhat.com> - 1.58.3-1
 - Update to 1.58.3
