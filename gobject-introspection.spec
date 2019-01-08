@@ -3,7 +3,7 @@
 %global __python %{__python3}
 
 Name:           gobject-introspection
-Version:        1.59.2
+Version:        1.59.3
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -54,7 +54,7 @@ Libraries and headers for gobject-introspection
 %autosetup -p1
 
 %build
-%meson -Ddoctool=true -Dgtk-doc=true -Dpython=%{__python3}
+%meson -Ddoctool=true -Dgtk_doc=true -Dpython=%{__python3}
 %meson_build
 
 %install
@@ -81,6 +81,9 @@ Libraries and headers for gobject-introspection
 %{_datadir}/gtk-doc/html/gi/
 
 %changelog
+* Tue Jan 08 2019 Kalev Lember <klember@redhat.com> - 1.59.3-1
+- Update to 1.59.3
+
 * Sat Jan 05 2019 Kalev Lember <klember@redhat.com> - 1.59.2-1
 - Update to 1.59.2
 - Switch to the meson build system
