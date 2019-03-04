@@ -3,7 +3,7 @@
 %global __python %{__python3}
 
 Name:           gobject-introspection
-Version:        1.59.4
+Version:        1.59.5
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -81,6 +81,9 @@ Libraries and headers for gobject-introspection
 %{_datadir}/gtk-doc/html/gi/
 
 %changelog
+* Mon Mar 04 2019 Kalev Lember <klember@redhat.com> - 1.59.5-1
+- Update to 1.59.5
+
 * Mon Feb 04 2019 Kalev Lember <klember@redhat.com> - 1.59.4-1
 - Update to 1.59.4
 
