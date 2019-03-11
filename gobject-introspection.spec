@@ -3,13 +3,13 @@
 %global __python %{__python3}
 
 Name:           gobject-introspection
-Version:        1.59.5
+Version:        1.60.0
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
-Source0:        https://download.gnome.org/sources/gobject-introspection/1.59/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gobject-introspection/1.60/%{name}-%{version}.tar.xz
 
 BuildRequires:  gcc
 BuildRequires:  bison
@@ -81,6 +81,9 @@ Libraries and headers for gobject-introspection
 %{_datadir}/gtk-doc/html/gi/
 
 %changelog
+* Mon Mar 11 2019 Kalev Lember <klember@redhat.com> - 1.60.0-1
+- Update to 1.60.0
+
 * Mon Mar 04 2019 Kalev Lember <klember@redhat.com> - 1.59.5-1
 - Update to 1.59.5
 
