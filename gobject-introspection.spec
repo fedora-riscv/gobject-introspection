@@ -4,7 +4,7 @@
 
 Name:           gobject-introspection
 Version:        1.60.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
@@ -81,6 +81,9 @@ Libraries and headers for gobject-introspection
 %{_datadir}/gtk-doc/html/gi/
 
 %changelog
+* Tue Apr 16 2019 Adam Williamson <awilliam@redhat.com> - 1.60.1-2
+- Rebuild with Meson fix for #1699099
+
 * Mon Apr 08 2019 Kalev Lember <klember@redhat.com> - 1.60.1-1
 - Update to 1.60.1
 
