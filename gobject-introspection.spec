@@ -4,7 +4,7 @@
 
 Name:           gobject-introspection
 Version:        1.60.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
@@ -46,6 +46,9 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       libtool
 # For g-ir-doctool
 Requires:       python3-mako
+# This package only works with the Python version it was built with
+# https://bugzilla.redhat.com/show_bug.cgi?id=1691064
+Requires:       (python(abi) = %{python3_version} if python3)
 
 %description devel
 Libraries and headers for gobject-introspection
@@ -81,6 +84,9 @@ Libraries and headers for gobject-introspection
 %{_datadir}/gtk-doc/html/gi/
 
 %changelog
+* Tue May 07 2019 Miro Hrončok <mhroncok@redhat.com> - 1.60.1-3
+- Require the Python version this was built with
+
 * Tue Apr 16 2019 Adam Williamson <awilliam@redhat.com> - 1.60.1-2
 - Rebuild with Meson fix for #1699099
 
