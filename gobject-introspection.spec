@@ -4,7 +4,7 @@
 
 Name:           gobject-introspection
 Version:        1.60.1
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
@@ -84,6 +84,9 @@ Libraries and headers for gobject-introspection
 %{_datadir}/gtk-doc/html/gi/
 
 %changelog
+* Thu Jul 25 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1.60.1-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
+
 * Tue May 07 2019 Miro Hrončok <mhroncok@redhat.com> - 1.60.1-3
 - Require the Python version this was built with
 
