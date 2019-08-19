@@ -3,8 +3,8 @@
 %global __python %{__python3}
 
 Name:           gobject-introspection
-Version:        1.61.1
-Release:        2%{?dist}
+Version:        1.61.2
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
@@ -84,6 +84,9 @@ Libraries and headers for gobject-introspection
 %{_datadir}/gtk-doc/html/gi/
 
 %changelog
+* Mon Aug 19 2019 Kalev Lember <klember@redhat.com> - 1.61.2-1
+- Update to 1.61.2
+
 * Thu Aug 15 2019 Miro Hrončok <mhroncok@redhat.com> - 1.61.1-2
 - Rebuilt for Python 3.8
 
