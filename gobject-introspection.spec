@@ -78,10 +78,12 @@ Libraries and headers for gobject-introspection
 %{_datadir}/gir-1.0
 %{_datadir}/gobject-introspection-1.0/
 %{_datadir}/aclocal/introspection.m4
-%{_mandir}/man1/*.gz
 %dir %{_datadir}/gtk-doc
 %dir %{_datadir}/gtk-doc/html
 %{_datadir}/gtk-doc/html/gi/
+%{_mandir}/man1/g-ir-compiler.1*
+%{_mandir}/man1/g-ir-generate.1*
+%{_mandir}/man1/g-ir-scanner.1*
 
 %changelog
 * Mon Sep 09 2019 Kalev Lember <klember@redhat.com> - 1.62.0-1
