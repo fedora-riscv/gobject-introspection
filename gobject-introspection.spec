@@ -3,13 +3,13 @@
 %global __python %{__python3}
 
 Name:           gobject-introspection
-Version:        1.62.0
+Version:        1.63.1
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
-Source0:        https://download.gnome.org/sources/gobject-introspection/1.62/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gobject-introspection/1.63/%{name}-%{version}.tar.xz
 
 BuildRequires:  gcc
 BuildRequires:  bison
@@ -57,7 +57,7 @@ Libraries and headers for gobject-introspection
 %autosetup -p1
 
 %build
-%meson -Ddoctool=true -Dgtk_doc=true -Dpython=%{__python3}
+%meson -Ddoctool=enabled -Dgtk_doc=true -Dpython=%{__python3}
 %meson_build
 
 %install
@@ -86,6 +86,9 @@ Libraries and headers for gobject-introspection
 %{_mandir}/man1/g-ir-scanner.1*
 
 %changelog
+* Thu Jan 16 2020 Kalev Lember <klember@redhat.com> - 1.63.1-1
+- Update to 1.63.1
+
 * Mon Sep 09 2019 Kalev Lember <klember@redhat.com> - 1.62.0-1
 - Update to 1.62.0
 
