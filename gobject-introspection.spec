@@ -3,7 +3,7 @@
 %global __python %{__python3}
 
 Name:           gobject-introspection
-Version:        1.63.1
+Version:        1.63.2
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
@@ -86,6 +86,9 @@ Libraries and headers for gobject-introspection
 %{_mandir}/man1/g-ir-scanner.1*
 
 %changelog
+* Fri Jan 17 2020 Kalev Lember <klember@redhat.com> - 1.63.2-1
+- Update to 1.63.2
+
 * Thu Jan 16 2020 Kalev Lember <klember@redhat.com> - 1.63.1-1
 - Update to 1.63.1
 
