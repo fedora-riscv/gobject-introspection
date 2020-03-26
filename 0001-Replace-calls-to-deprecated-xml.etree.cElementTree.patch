@@ -1,0 +1,45 @@
+From 8ceb23621d7e59718c1d512155aae8e8eb17db56 Mon Sep 17 00:00:00 2001
+From: Stephen Gallagher <sgallagh@redhat.com>
+Date: Thu, 26 Mar 2020 15:17:37 -0400
+Subject: [PATCH] Replace calls to deprecated xml.etree.cElementTree
+
+cElementTree was removed in Python 3.9 in favor of ElementTree,
+which has used a fast, native implementation since Python 3.3.
+
+Fixes https://bugzilla.redhat.com/show_bug.cgi?id=1817649
+
+Signed-off-by: Stephen Gallagher <sgallagh@redhat.com>
+---
+ giscanner/gdumpparser.py | 2 +-
+ giscanner/girparser.py   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/giscanner/gdumpparser.py b/giscanner/gdumpparser.py
+index 1730fee5..e7ccf575 100644
+--- a/giscanner/gdumpparser.py
++++ b/giscanner/gdumpparser.py
+@@ -22,7 +22,7 @@ import os
+ import sys
+ import tempfile
+ import subprocess
+-from xml.etree.cElementTree import parse
++from xml.etree.ElementTree import parse
+ 
+ from . import ast
+ from . import message
+diff --git a/giscanner/girparser.py b/giscanner/girparser.py
+index 0a6c687b..35206a41 100644
+--- a/giscanner/girparser.py
++++ b/giscanner/girparser.py
+@@ -21,7 +21,7 @@
+ import os
+ 
+ from collections import OrderedDict
+-from xml.etree.cElementTree import parse
++from xml.etree.ElementTree import parse
+ 
+ from . import ast
+ from .girwriter import COMPATIBLE_GIR_VERSION
+-- 
+2.25.2
+
