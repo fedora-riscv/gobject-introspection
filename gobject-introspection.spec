@@ -3,16 +3,13 @@
 %global __python %{__python3}
 
 Name:           gobject-introspection
-Version:        1.64.0
-Release:        2%{?dist}
+Version:        1.64.1
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 Source0:        https://download.gnome.org/sources/gobject-introspection/1.64/%{name}-%{version}.tar.xz
-
-# Fix the build with Python 3.9
-Patch0:         0001-Replace-calls-to-deprecated-xml.etree.cElementTree.patch
 
 BuildRequires:  gcc
 BuildRequires:  bison
@@ -89,6 +86,9 @@ Libraries and headers for gobject-introspection
 %{_mandir}/man1/g-ir-scanner.1*
 
 %changelog
+* Sun Apr 05 2020 Kalev Lember <klember@redhat.com> - 1.64.1-1
+- Update to 1.64.1
+
 * Thu Mar 26 2020 Kalev Lember <klember@redhat.com> - 1.64.0-2
 - Fix the build with Python 3.9 (#1817649)
 
