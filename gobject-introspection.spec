@@ -4,7 +4,7 @@
 
 Name:           gobject-introspection
 Version:        1.64.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
@@ -86,6 +86,9 @@ Libraries and headers for gobject-introspection
 %{_mandir}/man1/g-ir-scanner.1*
 
 %changelog
+* Fri May 22 2020 Miro Hrončok <mhroncok@redhat.com> - 1.64.1-2
+- Rebuilt for Python 3.9
+
 * Sun Apr 05 2020 Kalev Lember <klember@redhat.com> - 1.64.1-1
 - Update to 1.64.1
 
