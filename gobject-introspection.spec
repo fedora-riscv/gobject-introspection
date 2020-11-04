@@ -4,12 +4,15 @@
 
 Name:           gobject-introspection
 Version:        1.66.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+, LGPLv2+, MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 Source0:        https://download.gnome.org/sources/gobject-introspection/1.66/%{name}-%{version}.tar.xz
+
+# Fix the build with Python 3.10
+Patch0:         243.patch
 
 BuildRequires:  gcc
 BuildRequires:  bison
@@ -86,6 +89,9 @@ Libraries and headers for gobject-introspection
 %{_mandir}/man1/g-ir-scanner.1*
 
 %changelog
+* Wed Nov 04 2020 Kalev Lember <klember@redhat.com> - 1.66.1-2
+- Backport an upstream MR to fix the build with Python 3.10 (#1893194)
+
 * Mon Oct  5 2020 Kalev Lember <klember@redhat.com> - 1.66.1-1
 - Update to 1.66.1
 
