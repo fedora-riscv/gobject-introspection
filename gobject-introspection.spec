@@ -1,7 +1,5 @@
 %global glib2_version 2.58.0
 
-%global __python %{__python3}
-
 Name:           gobject-introspection
 Version:        1.67.1
 Release:        1%{?dist}
