@@ -2,10 +2,10 @@
 
 Name:           gobject-introspection
 Version:        1.68.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
-License:        GPLv2+, LGPLv2+, MIT
+License:        GPLv2+ and LGPLv2+ and MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
 Source0:        https://download.gnome.org/sources/gobject-introspection/1.68/%{name}-%{version}.tar.xz
 
@@ -88,6 +88,9 @@ Libraries and headers for gobject-introspection
 %{_mandir}/man1/g-ir-scanner.1*
 
 %changelog
+* Wed Apr 28 2021 David King <amigadave@amigadave.com> - 1.68.0-3
+- Fix the license field (#1915340)
+
 * Mon Apr 26 2021 Kalev Lember <klember@redhat.com> - 1.68.0-2
 - Fix graphene instrospection build on i686
 
