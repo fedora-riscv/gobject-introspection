@@ -67,7 +67,8 @@ Libraries and headers for gobject-introspection
 %meson_install
 
 %files
-%license COPYING
+%doc NEWS README.rst
+%license COPYING COPYING.GPL COPYING.LGPL
 %{_libdir}/lib*.so.*
 %dir %{_libdir}/girepository-1.0
 %{_libdir}/girepository-1.0/*.typelib
@@ -91,6 +92,7 @@ Libraries and headers for gobject-introspection
 %changelog
 * Mon Jun 28 2021 David King <amigadave@amigadave.com> - 1.68.0-5
 - Add Requires on python-markdown for g-ir-doc-tool
+- Add license texts and documentation files
 
 * Thu Jun 03 2021 Python Maint <python-maint@redhat.com> - 1.68.0-4
 - Rebuilt for Python 3.10
