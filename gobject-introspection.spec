@@ -2,7 +2,7 @@
 
 Name:           gobject-introspection
 Version:        1.68.0
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+ and LGPLv2+ and MIT
@@ -48,6 +48,7 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 Requires:       libtool
 # For g-ir-doctool
 Requires:       python3-mako
+Requires:       python3-markdown
 # This package only works with the Python version it was built with
 # https://bugzilla.redhat.com/show_bug.cgi?id=1691064
 Requires:       (python(abi) = %{python3_version} if python3)
@@ -88,6 +89,9 @@ Libraries and headers for gobject-introspection
 %{_mandir}/man1/g-ir-scanner.1*
 
 %changelog
+* Mon Jun 28 2021 David King <amigadave@amigadave.com> - 1.68.0-5
+- Add Requires on python-markdown for g-ir-doc-tool
+
 * Thu Jun 03 2021 Python Maint <python-maint@redhat.com> - 1.68.0-4
 - Rebuilt for Python 3.10
 
