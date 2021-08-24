@@ -1,17 +1,13 @@
 %global glib2_version 2.58.0
 
 Name:           gobject-introspection
-Version:        1.68.0
-Release:        6%{?dist}
+Version:        1.69.0
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+ and LGPLv2+ and MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
-Source0:        https://download.gnome.org/sources/gobject-introspection/1.68/%{name}-%{version}.tar.xz
-
-# Fix graphene instrospection build on i686
-# https://gitlab.gnome.org/GNOME/gobject-introspection/-/issues/384
-Patch0:         269.patch
+Source0:        https://download.gnome.org/sources/gobject-introspection/1.69/%{name}-%{version}.tar.xz
 
 BuildRequires:  gcc
 BuildRequires:  bison
@@ -86,10 +82,14 @@ Libraries and headers for gobject-introspection
 %dir %{_datadir}/gtk-doc/html
 %{_datadir}/gtk-doc/html/gi/
 %{_mandir}/man1/g-ir-compiler.1*
+%{_mandir}/man1/g-ir-doc-tool.1*
 %{_mandir}/man1/g-ir-generate.1*
 %{_mandir}/man1/g-ir-scanner.1*
 
 %changelog
+* Tue Aug 24 2021 Kalev Lember <klember@redhat.com> - 1.69.0-1
+- Update to 1.69.0
+
 * Thu Jul 22 2021 Fedora Release Engineering <releng@fedoraproject.org> - 1.68.0-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_35_Mass_Rebuild
 
