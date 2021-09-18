@@ -1,13 +1,13 @@
 %global glib2_version 2.58.0
 
 Name:           gobject-introspection
-Version:        1.69.0
+Version:        1.70.0
 Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+ and LGPLv2+ and MIT
 URL:            https://wiki.gnome.org/Projects/GObjectIntrospection
-Source0:        https://download.gnome.org/sources/gobject-introspection/1.69/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gobject-introspection/1.70/%{name}-%{version}.tar.xz
 
 BuildRequires:  gcc
 BuildRequires:  bison
@@ -87,6 +87,9 @@ Libraries and headers for gobject-introspection
 %{_mandir}/man1/g-ir-scanner.1*
 
 %changelog
+* Sat Sep 18 2021 Kalev Lember <klember@redhat.com> - 1.70.0-1
+- Update to 1.70.0
+
 * Tue Aug 24 2021 Kalev Lember <klember@redhat.com> - 1.69.0-1
 - Update to 1.69.0
 - Tighten soname globs
