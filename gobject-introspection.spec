@@ -2,7 +2,7 @@
 
 Name:           gobject-introspection
 Version:        1.70.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+ and LGPLv2+ and MIT
@@ -87,6 +87,9 @@ Libraries and headers for gobject-introspection
 %{_mandir}/man1/g-ir-scanner.1*
 
 %changelog
+* Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.70.0-3
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
 * Sat Jan 08 2022 Miro Hrončok <mhroncok@redhat.com> - 1.70.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Changes/LIBFFI34
 
