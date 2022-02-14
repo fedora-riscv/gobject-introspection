@@ -1,8 +1,8 @@
 %global glib2_version 2.58.0
 
 Name:           gobject-introspection
-Version:        1.70.0
-Release:        3%{?dist}
+Version:        1.71.0
+Release:        1%{?dist}
 Summary:        Introspection system for GObject-based libraries
 
 License:        GPLv2+ and LGPLv2+ and MIT
@@ -11,14 +11,11 @@ Source0:        https://download.gnome.org/sources/gobject-introspection/1.70/%{
 
 BuildRequires:  gcc
 BuildRequires:  bison
-BuildRequires:  cairo-gobject-devel
 BuildRequires:  flex
 BuildRequires:  fontconfig-devel
 BuildRequires:  freetype-devel
 BuildRequires:  gettext
-BuildRequires:  glib2-devel >= %{glib2_version}
 BuildRequires:  gtk-doc
-BuildRequires:  libffi-devel
 BuildRequires:  libX11-devel
 BuildRequires:  libXfixes-devel
 BuildRequires:  libXft-devel
@@ -28,6 +25,9 @@ BuildRequires:  meson
 BuildRequires:  python3-devel
 BuildRequires:  python3-mako
 BuildRequires:  python3-markdown
+BuildRequires:  pkgconfig(cairo-gobject)
+BuildRequires:  pkgconfig(gio-2.0) >= %{glib2_version}
+BuildRequires:  pkgconfig(libffi)
 
 Requires:       glib2%{?_isa} >= %{glib2_version}
 
@@ -87,6 +87,9 @@ Libraries and headers for gobject-introspection
 %{_mandir}/man1/g-ir-scanner.1*
 
 %changelog
+* Mon Feb 14 2022 David King <amigadave@amigadave.com> - 1.71.0-1
+- Update to 1.71.0
+
 * Thu Jan 20 2022 Fedora Release Engineering <releng@fedoraproject.org> - 1.70.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
 
